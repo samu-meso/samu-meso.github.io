@@ -229,12 +229,33 @@
                 </ul>
             </section>
             <div class="cv-download">
-                <a href="cv.pdf" download class="cv-button">Scarica CV</a>
+                <a href="#" class="cv-button" id="cvBtnHome">Scarica CV</a>
+                <div id="cvMsgOverlayHome" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:2000;background:rgba(0,0,0,0.25);justify-content:center;align-items:center;">
+                    <div id="cvMsgHome" style="background:var(--card-bg);color:var(--primary);padding:18px 28px;border-radius:14px;box-shadow:0 4px 24px rgba(88,166,255,0.18);font-size:1.1em;position:relative;min-width:220px;text-align:center;border:1.5px solid var(--primary);max-width:90vw;">
+                        <span id="cvMsgTextHome">Per scaricare il cv scrivere un e-mail</span>
+                        <button id='closeCvMsgHome' style='position:absolute;top:6px;right:10px;background:none;border:none;font-size:1.2em;color:var(--primary);cursor:pointer;' title='Chiudi'>&times;</button>
+                    </div>
+                </div>
             </div>
         </main>
 
         <script>
             (function(){
+                // Messaggio custom per scarica CV home
+                const cvBtnHome = document.getElementById('cvBtnHome');
+                const cvMsgOverlayHome = document.getElementById('cvMsgOverlayHome');
+                if(cvBtnHome && cvMsgOverlayHome) {
+                    cvBtnHome.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        cvMsgOverlayHome.style.display = 'flex';
+                        document.getElementById('closeCvMsgHome').onclick = function(){cvMsgOverlayHome.style.display='none';};
+                        cvMsgOverlayHome.onclick = function(ev){
+                            if(ev.target === cvMsgOverlayHome) cvMsgOverlayHome.style.display='none';
+                        };
+                        setTimeout(()=>{cvMsgOverlayHome.style.display='none';},5000);
+                    });
+                }
+
                 const btn = document.getElementById('navToggle');
                 const nav = document.getElementById('navLinks');
                 const overlay = document.getElementById('navOverlay');
