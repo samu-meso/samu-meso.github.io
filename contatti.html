@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Home — Samuele Mesoraca</title>
+        <title>Contatti — Samuele Mesoraca</title>
         <style>
             :root{
                 --bg:#0f1419;
@@ -14,7 +14,7 @@
                 --muted:#8b949e;
                 --card-bg: rgba(13,17,23,0.8);
             }
-            body{font-family:Segoe UI, Roboto, Arial, sans-serif; margin:0; color:var(--text); background:
+            body{font-family:Segoe UI, Roboto, Arial, sans-serif;margin:0;color:var(--text);background:
                 linear-gradient(135deg, rgba(183,228,163,0.04) 0%, rgba(88,166,255,0.03) 100%),
                 #0f1419}
             .header-container{background:transparent;padding:18px 0}
@@ -24,7 +24,7 @@
             .nav-links{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:8px}
             .nav-links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:12px;background:rgba(30,40,60,0.5);border:1px solid rgba(88,166,255,0.2)}
             .nav-links a:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(88,166,255,0.2)}
-            .cta{background:linear-gradient(90deg,var(--accent),#ff8a66);color:white;padding:8px 14px;border-radius:999px;text-decoration:none;}
+            .cta{background:linear-gradient(90deg,var(--accent),#9fe2b7);color:#07210d;padding:8px 14px;border-radius:999px;text-decoration:none;}
             .hamburger{display:none;border:0;background:transparent;padding:8px;cursor:pointer;z-index:1001;position:relative}
             .hamburger span{display:block;width:22px;height:3px;background:var(--text);margin:4px 0;border-radius:3px;transition:all 0.3s ease}
             .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(10px, 10px)}
@@ -36,14 +36,11 @@
             @keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
             @keyframes slideOutRight{from{transform:translateX(0)}to{transform:translateX(100%)}}
             .container{max-width:1000px;margin:24px auto;padding:0 16px}
-            .card{background:var(--card-bg);border-radius:18px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,0.5);border:1px solid rgba(88,166,255,0.1); margin-top: 15px}
+            .card{background:var(--card-bg);border-radius:18px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,0.5);border:1px solid rgba(88,166,255,0.1)}
             h1{font-size:34px;margin:6px 0;color:var(--primary)}
             h2{color:var(--accent2);margin:6px 0}
             p{line-height:1.6;color:var(--text)}
             ul{padding-left:1.2rem}
-            .skills-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-            .skill-badge{display:inline-block;background:rgba(88,166,255,0.15);border:1px solid rgba(88,166,255,0.3);color:var(--accent);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:500}
-            .skills-grid .skill-badge:nth-child(odd){border-color:rgba(183,228,163,0.3);color:var(--accent)}
             .cv-download{display:flex;justify-content:center;margin:24px 0}
             .cv-button{display:inline-block;background:linear-gradient(90deg,var(--accent),#9fe2b7);color:#07210d;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s ease;border:none;cursor:pointer;font-size:16px}
             .cv-button:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(183,228,163,0.3)}
@@ -83,89 +80,13 @@
 
         <main class="container">
             <section class="card">
-                <h1>Chi sono</h1>
-                    <p><strong>Samuele Mesoraca - 14 luglio 2004<br></strong></p>
-                    <p>
-                    Mi chiamo Samuele Mesoraca, ho 21 anni e sono una persona curiosa e orientata alla crescita.
-                    Mi appassiona capire come funzionano le cose: dalla tecnologia ai sistemi organizzativi,
-                    cerco sempre di analizzare i problemi e trovare soluzioni pratiche e strutturate.
-                    </p>
-                    <p>
-                    Nel tempo ho sviluppato interesse per la programmazione e i progetti digitali,
-                    lavorando su applicazioni, sistemi multiplayer e strumenti di automazione.
-                    Per me programmare non significa solo scrivere codice, ma ragionare,
-                    scomporre problemi e costruire qualcosa che rimanga stabile nel tempo.
-                    </p>
-                    <p>
-                    Le diverse esperienze lavorative mi hanno abituato ad adattarmi a contesti molto differenti:
-                    dal contatto diretto con il pubblico alla gestione di dati, fino al lavoro operativo e logistico.
-                    Questo mi ha insegnato responsabilità, precisione e capacità di lavorare sotto pressione
-                    mantenendo sempre organizzazione e metodo.
-                    </p>
-                    <p>
-                    Nel tempo libero coltivo diverse passioni: suono la chitarra da molti anni,
-                    mi alleno in palestra e continuo a sperimentare con progetti informatici personali.
-                    Mi piace anche seguire community online e approfondire nuove tecnologie,
-                    unendo creatività e logica.
-                    </p>
-                    <p>
-                    Sono una persona paziente, concreta e determinata.
-                    Affronto ciò che faccio con serietà ma anche con voglia di migliorare costantemente,
-                    cercando sempre di imparare qualcosa da ogni esperienza.
-                    </p>
-            </section>
-
-            <section class="card">
-                <h1>Formazione Tecnica</h1>
-                <ul>
-                    <li><strong>Sviluppo Frontend con JavaScript e React</strong> — HTML5, CSS3, JavaScript moderno, React e component-based architecture</li>
-                    <li><strong>Sviluppo con Python</strong> — Fondamenti, OOP, strutture dati, file handling, data processing</li>
-                    <li><strong>Logiche di Programmazione e Basi OOP</strong> — Algoritmi, design patterns, Java introduction</li>
-                    <li><strong>Database e Tecnologie di Accesso ai Dati</strong> — SQL, modellazione relazionale, CRUD operations</li>
-                    <li><strong>Architetture Informatiche, Sistemi Operativi e IT Security</strong> — Networking, protocolli, security fundamentals</li>
-                    <li><strong>Analisi Dati e Statistica</strong> — Data analysis, visualizzazione, metriche statistiche</li>
-                </ul>
-            </section>
-
-            <section class="card">
-                <h1>Formazione</h1>
-                <ul>
-                    <li><strong>IFOA: Software developer con strumenti AI</strong> — Formazione tecnica in sviluppo software con approccio AI-assisted</li>
-                    <li><strong>Qualifica triennale come Assistente Commerciale</strong> — Istituto Professionale Servizi Commerciali "Filippo Re"</li>
-                    <li><strong>Diploma Istituto Professionale (5 anni)</strong> — Servizi Commerciali, Istituto Professionale "Filippo Re"</li>
-                </ul>
-            </section>
-
-            <section class="card">
-                <h1>Lingue</h1>
-                <ul>
-                    <li><strong>Italiano</strong> — Lingua madre</li>
-                    <li><strong>Inglese</strong> — Livello B2 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
-                    <li><strong>Francese</strong> — Livello B1 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
-                </ul>
-            </section>
-
-            <section class="card">
-                <h1>Competenze</h1>
-                <div class="skills-grid">
-                    <span class="skill-badge">Python</span>
-                    <span class="skill-badge">JavaScript</span>
-                    <span class="skill-badge">React</span>
-                    <span class="skill-badge">HTML5</span>
-                    <span class="skill-badge">CSS3</span>
-                    <span class="skill-badge">Java</span>
-                    <span class="skill-badge">SQL</span>
-                    <span class="skill-badge">OOP</span>
-                    <span class="skill-badge">Git</span>
-                    <span class="skill-badge">Problem Solving</span>
-                    <span class="skill-badge">Data Analysis</span>
-                    <span class="skill-badge">API REST</span>
+                <h1>Contatti</h1>
+                <p>Email: samuele.mesoraca14@gmail.com</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/samuele-mesoraca-842810230/" target="_blank">Profilo LinkedIn</a></p>
+                <div class="cv-download">
+                    <a href="cv.pdf" download class="cv-button">Scarica CV</a>
                 </div>
             </section>
-
-            <div class="cv-download">
-                <a href="cv.pdf" download class="cv-button">Scarica CV</a>
-            </div>
         </main>
 
         <script>

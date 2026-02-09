@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Projects — Samuele Mesoraca</title>
+        <style>
+            :root{
+                --bg:#0f1419;
+                --accent:#b7e4a3;
+                --accent2:#ffd93d;
+                --primary:#58a6ff;
+                --text:#e6edf3;
+                --muted:#8b949e;
+                --card-bg: rgba(13,17,23,0.8);
+            }
+            body{font-family:Segoe UI, Roboto, Arial, sans-serif;margin:0;color:var(--text);background:
+                linear-gradient(135deg, rgba(183,228,163,0.04) 0%, rgba(88,166,255,0.03) 100%),
+                #0f1419}
+            .header-container{background:transparent;padding:18px 0}
+            .navbar{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px;gap:8px}
+            .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--primary);text-decoration:none;justify-content:center;margin-bottom:8px}
+            .logo .mark{width:44px;height:44px;background:var(--accent);color:#07210d;border-radius:10px;display:inline-grid;place-items:center;font-size:18px;box-shadow:0 8px 16px rgba(183,228,163,0.3)}
+            .nav-links{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:8px}
+            .nav-links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:12px;background:rgba(30,40,60,0.5);border:1px solid rgba(88,166,255,0.2)}
+            .nav-links a:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(88,166,255,0.2)}
+            .cta{background:linear-gradient(90deg,var(--accent),#9fe2b7);color:#07210d;padding:8px 14px;border-radius:999px;text-decoration:none;}
+            .hamburger{display:none;border:0;background:transparent;padding:8px;cursor:pointer;z-index:1001;position:relative}
+            .hamburger span{display:block;width:22px;height:3px;background:var(--text);margin:4px 0;border-radius:3px;transition:all 0.3s ease}
+            .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(10px, 10px)}
+            .hamburger.active span:nth-child(2){opacity:0}
+            .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px, -7px)}
+            .nav-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:999;animation:fadeIn 0.3s ease}
+            .nav-overlay.open{display:block}
+            @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+            @keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
+            @keyframes slideOutRight{from{transform:translateX(0)}to{transform:translateX(100%)}}
+            .container{max-width:1000px;margin:24px auto;padding:0 16px}
+            .card{background:var(--card-bg);border-radius:18px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,0.5);border:1px solid rgba(88,166,255,0.1)}
+            h1{font-size:34px;margin:6px 0 24px 0;color:var(--primary);font-family:'Segoe UI', 'Trebuchet MS', sans-serif;font-weight:700;letter-spacing:0.5px}
+            h2{color:var(--accent2);margin:6px 0}
+            p{line-height:1.6;color:var(--text)}
+            ul{padding-left:1.2rem}
+            .project-item{cursor:pointer;background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);border-radius:14px;padding:14px;margin-bottom:12px;transition:all 0.3s ease}
+            .project-item:hover{background:rgba(88,166,255,0.12);border-color:rgba(88,166,255,0.4)}
+            .project-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+            .project-title{font-size:20px;font-weight:600;color:var(--accent2);margin:0}
+            .project-icon{font-size:20px;transition:transform 0.3s ease;color:var(--primary)}
+            .project-item.open .project-icon{transform:rotate(180deg)}
+            .project-description{max-height:0;overflow:hidden;transition:max-height 0.3s ease,margin-top 0.3s ease;margin-top:0}
+            .project-item.open .project-description{max-height:600px;overflow-y:auto;margin-top:12px;padding-top:12px;border-top:1px solid rgba(88,166,255,0.2)}
+            .project-description p{margin:0;line-height:1.6;font-size:14px;color:var(--text)}
+            .project-description a{color:var(--primary);text-decoration:none}
+            .project-description a:hover{text-decoration:underline}
+            .cv-button{display:inline-block;background:linear-gradient(90deg,var(--accent),#9fe2b7);color:#07210d;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s ease;border:none;cursor:pointer;margin-bottom:12px}
+            .cv-button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(183,228,163,0.3)}
+            @media (max-width:700px){
+                .navbar{position:relative;z-index:1000}
+                .nav-links{position:fixed;top:70px;right:12px;width:160px;background:linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);flex-direction:column;padding:12px;gap:8px;display:none;z-index:999;overflow-y:auto;border-radius:12px;border:1px solid rgba(88,166,255,0.2);box-shadow:0 4px 16px rgba(0,0,0,0.5);animation:slideDown 0.3s ease}
+                @keyframes slideDown{from{transform:translateY(-10px);opacity:0}to{transform:translateY(0);opacity:1}}
+                .nav-links.open{display:flex}
+                .nav-links a{width:100%;text-align:center;padding:8px;border-radius:8px;background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);font-size:13px;transition:all 0.2s ease}
+                .nav-links a:active{transform:scale(0.95);background:rgba(88,166,255,0.15)}
+                .nav-links a.cta{background:linear-gradient(90deg,var(--accent),#9fe2b7);color:#07210d;border:none;font-weight:600}
+                .hamburger{display:block}
+                .header-container{position:sticky;top:0;z-index:999;background:linear-gradient(135deg, rgba(15,20,25,0.95) 0%, rgba(13,17,23,0.95) 100%);backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header-container">
+            <nav class="navbar">
+                <a class="logo" href="index.html">
+                    <span class="mark">SM</span>
+                    <span>Samuele</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="projects.html">Progetti</a>
+                    <a class="cta" href="contatti.html">Contatti</a>
+                </div>
+                <button class="hamburger" id="navToggle" aria-label="Apri menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+            <div class="nav-overlay" id="navOverlay"></div>
+        </header>
+
+        <main class="container">
+            <section class="card">
+                <h1>I miei Progetti</h1>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <h2 class="project-title">Timeline 3.0</h2>
+                        <span class="project-icon">▼</span>
+                    </div>
+                    <div class="project-description">
+                        <p>
+                            Progettazione e sviluppo completo di un server multiplayer FiveM basato su framework proprietario realizzato da zero.
+                            Il progetto è stato sviluppato utilizzando Lua per la logica lato server client e gameplay, MySQL per la persistenza dei dati
+                            e JavaScript, HTML e CSS per la realizzazione delle interfacce utente (NUI).
+                        </p><br>
+                        <p>
+                            Sono stati creati numerosi script personalizzati, tra cui sistemi di gestione giocatore, inventario, economia,
+                            interazioni, sincronizzazione client-server e salvataggio strutturato delle informazioni. La logica è stata organizzata
+                            in modo modulare per facilitare manutenzione, aggiornamenti e ampliamenti futuri del progetto.
+                        </p>
+                        <p><br>
+                            Particolare attenzione è stata dedicata all’ottimizzazione delle prestazioni: riduzione del carico lato server,
+                            ottimizzazione delle query MySQL e gestione efficiente degli eventi asincroni per garantire stabilità in ambiente multiplayer.
+                        </p>
+                        <p><br>
+                            Il progetto ha richiesto attività costante di debugging, gestione dei casi limite e prevenzione di exploit,
+                            mantenendo coerenza dei dati e comportamento prevedibile del sistema durante sessioni con più utenti simultanei.
+                        </p>
+                        <p><strong>Tecnologie utilizzate:</strong> Lua, MySQL, JavaScript, HTML, CSS, TypeScript</p>
+                        <!-- <p style="margin-top:8px;"><strong>Link:</strong> <a href="https://github.com/samu-meso/timelinerp3.0" target="_blank">quì</a></p> -->
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h2 class="project-title">Avis WhatsApp Sender</h2>
+                        <span class="project-icon">▼</span>
+                    </div>
+                    <div class="project-description">
+                    <p>
+                        Applicazione desktop sviluppata in Python per l’automazione dell’invio di messaggi WhatsApp tramite API.
+                        Il software è dotato di interfaccia grafica realizzata con Tkinter e permette agli operatori di caricare
+                        un file Excel contenente numeri di telefono e stato di contatto per inviare comunicazioni in modo massivo
+                        ma controllato.
+                    </p><br>
+                    <p>
+                        Il sistema legge i dati da fogli .xlsx tramite openpyxl, individua dinamicamente le colonne richieste
+                        e filtra i destinatari evitando l’invio ai contatti già segnati come contattati. I messaggi vengono scelti
+                        tramite tipologia (prima donazione, triage, studenti) e generati da configurazione JSON esterna per permettere
+                        modifiche senza intervento sul codice.
+                    </p><br>
+                    <p>
+                        È stata implementata la gestione delle configurazioni tramite file config.json, contenente token di accesso
+                        e parametri API WhatsApp Business. L’applicazione costruisce dinamicamente le richieste HTTP verso il servizio
+                        di messaggistica utilizzando la libreria requests.
+                    </p><br>
+                    <p>
+                        Per il messaggio di triage è presente un sistema di selezione data con validazione del formato, mentre
+                        l’applicazione integra controlli di sicurezza come prevenzione invii multipli, gestione delay tra invii
+                        e blocco in assenza di dati obbligatori. Sono inoltre gestiti errori di configurazione, formati non validi
+                        e assenza di file.
+                    </p><br>
+                    <p>
+                        Il progetto include gestione eventi dell’interfaccia, caricamento dinamico delle risorse, parsing strutturato
+                        dei dati e separazione tra logica applicativa e configurazione. L’obiettivo è automatizzare comunicazioni
+                        organizzative riducendo errori manuali e tempi operativi mantenendo controllo sui destinatari.
+                    </p><br>
+                    <p><strong>Tecnologie utilizzate:</strong> Python, Tkinter, openpyxl, requests</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h2 class="project-title">Timeline – Discord Bot</h2>
+                        <span class="project-icon">▼</span>
+                    </div>
+                    <div class="project-description">
+                        <p>
+                            Sviluppo di un bot Discord in Node.js dedicato all’integrazione e alla gestione del server community
+                            collegato al progetto Timeline. Il bot utilizza la libreria discord.js per gestire eventi, comandi,
+                            permessi e interazioni tra utenti e staff all’interno del server.
+                        </p><br>
+                        <p>
+                            È stato implementato un sistema modulare di comandi caricati dinamicamente da directory separate,
+                            permettendo l’aggiunta di nuove funzionalità senza modificare la struttura principale del codice.
+                            Il bot gestisce ruoli, canali temporanei, messaggi embed e pulsanti interattivi tramite componenti
+                            UI nativi di Discord.
+                        </p><br>
+                        <p>
+                            Ho sviluppato un sistema ticket completo che consente agli utenti di aprire conversazioni private
+                            con lo staff tramite interfaccia a pulsanti. Il sistema permette apertura, chiusura e riapertura
+                            delle richieste mantenendo ordine e tracciabilità delle comunicazioni.
+                        </p><br>
+                        <p>
+                            Il bot integra inoltre funzionalità di monitoraggio del server FiveM tramite API dedicate,
+                            permettendo il controllo dello stato del server e l’interazione con i dati di gioco direttamente
+                            da Discord.
+                        </p><br>
+                        <p>
+                            È presente anche un sistema di monitoraggio Twitch che controlla periodicamente diversi canali e
+                            notifica automaticamente la community quando uno streamer va in diretta. La gestione delle richieste
+                            avviene tramite chiamate HTTP asincrone con axios e autenticazione tramite token.
+                        </p><br>
+                        <p>
+                            Il progetto utilizza MySQL per la gestione persistente dei dati, configurazioni tramite file JSON
+                            e variabili d’ambiente, gestione degli errori e riavvio automatico del bot in caso di crash per
+                            garantire continuità del servizio.
+                        </p>
+                        <p style="margin-top:8px;"><strong>Tecnologie utilizzate:</strong> Javascript, Node.js, MySQL</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h2 class="project-title">Roktura – Website</h2>
+                        <span class="project-icon">▼</span>
+                    </div>
+                    <div class="project-description">
+                        <p>
+                            Collaborazione temporanea allo sviluppo di un sito web informativo, partecipando alla struttura
+                            del frontend e all’organizzazione delle pagine. Il progetto è realizzato con tecnologie web
+                            standard (HTML, CSS e JavaScript) con particolare attenzione alla disposizione dei contenuti
+                            e alla navigazione tra le sezioni.
+                        </p><br>
+                        <p>
+                            Ho contribuito alla sistemazione del layout, alla gestione degli elementi grafici e alla
+                            correzione di comportamenti non coerenti tra le pagine, intervenendo su stile, spaziature e
+                            struttura del markup per mantenere coerenza visiva e leggibilità.
+                        </p><br>
+                        <p>
+                            L’attività ha incluso debugging del codice, adattamento responsive e organizzazione delle
+                            risorse statiche, collaborando su un progetto già avviato e integrando modifiche senza alterarne
+                            la struttura principale.
+                        </p>
+                        <p style="margin-top:8px;"><strong>Tecnologie utilizzate:</strong> HTML, CSS, JavaScript</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h2 class="project-title">Progetto personale – Sistema sushi in React.js</h2>
+                        <span class="project-icon">▼</span>
+                    </div>
+                    <div class="project-description">
+                        <p>
+                            Progetto personale sviluppato autonomamente con l’obiettivo di applicare in modo pratico le competenze
+                            di programmazione, organizzazione del codice e gestione dei dati. L’applicazione è stata progettata
+                            seguendo un approccio strutturato: analisi del problema, suddivisione in moduli e implementazione
+                            progressiva delle funzionalità principali.
+                        </p><br>
+
+                        <p>
+                            Ho curato la logica applicativa, la gestione degli input utente e la validazione dei dati,
+                            assicurando comportamenti prevedibili anche in presenza di errori o valori non validi.
+                            L’architettura è stata mantenuta modulare per facilitare modifiche e ampliamenti futuri.
+                        </p><br>
+
+                        <p>
+                            Particolare attenzione è stata dedicata al debugging e alla leggibilità del codice, mantenendo
+                            separazione tra configurazioni, logica e presentazione. Sono stati gestiti casi limite,
+                            controlli di sicurezza e gestione delle eccezioni per evitare blocchi del programma.
+                        </p><br>
+
+                        <p>
+                            Il progetto è stato utilizzato come esercizio di consolidamento delle competenze di sviluppo:
+                            organizzazione dei file, struttura delle funzioni, manutenzione del codice e miglioramento
+                            progressivo delle prestazioni attraverso test e correzioni iterative.
+                        </p><br>
+                        <p style="margin-top:8px;"><strong>Tecnologie utilizzate:</strong> React.js, JavaScript, HTML, CSS</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script>
+            (function(){
+                const btn = document.getElementById('navToggle');
+                const nav = document.getElementById('navLinks');
+                const overlay = document.getElementById('navOverlay');
+                
+                const toggleMenu = () => {
+                    nav.classList.toggle('open');
+                    btn.classList.toggle('active');
+                };
+                
+                const closeMenu = () => {
+                    nav.classList.remove('open');
+                    btn.classList.remove('active');
+                };
+                
+                btn.addEventListener('click', toggleMenu);
+                overlay.addEventListener('click', closeMenu);
+                
+                // Chiudi menu quando clicchi su un link
+                nav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+                
+                // Chiudi menu con ESC
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && nav.classList.contains('open')) {
+                        closeMenu();
+                    }
+                });
+                
+                // Accordion logic
+                const projectItems = document.querySelectorAll('.project-item');
+                projectItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        item.classList.toggle('open');
+                    });
+                });
+            })();
+        </script>
+    </body>
+</html>
