@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>Home — Samuele Mesoraca</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <style>
             :root{
                 --bg:#0f1419;
@@ -20,6 +21,12 @@
             .header-container{background:transparent;padding:18px 0}
             .navbar{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px;gap:8px}
             .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--primary);text-decoration:none;justify-content:center;margin-bottom:8px}
+            .logo, .logo:hover, .logo:focus, .logo:active {
+                border-bottom: none !important;
+                text-decoration: none !important;
+                box-shadow: none !important;
+                outline: none !important;
+            }
             .logo .mark{width:44px;height:44px;background:var(--accent);color:#07210d;border-radius:10px;display:inline-grid;place-items:center;font-size:18px;box-shadow:0 8px 16px rgba(183,228,163,0.3)}
             .nav-links{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:8px}
             .nav-links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:12px;background:rgba(30,40,60,0.5);border:1px solid rgba(88,166,255,0.2)}
@@ -47,6 +54,13 @@
             .cv-download{display:flex;justify-content:center;margin:24px 0}
             .cv-button{display:inline-block;background:linear-gradient(90deg,var(--accent),#9fe2b7);color:#07210d;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s ease;border:none;cursor:pointer;font-size:16px}
             .cv-button:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(183,228,163,0.3)}
+            a{color:var(--primary);text-decoration:none;border-bottom:2px solid transparent;transition:all 0.3s ease;padding-bottom:2px}
+            a:hover{border-bottom-color:var(--primary);color:var(--accent);text-shadow:0 0 8px rgba(88,166,255,0.3)}
+            .card a{color:var(--primary);font-weight:500}
+            .card a:hover{color:var(--accent2);border-bottom-color:var(--accent2)}
+            .info-item{display:flex;align-items:center;gap:12px;margin:12px 0;font-size:15px}
+            .info-item i{width:24px;height:24px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+            .info-item svg{width:24px;height:24px;flex-shrink:0;stroke:var(--primary);fill:none;stroke-width:2}
             @media (max-width:700px){
                 .navbar{position:relative;z-index:1000}
                 .nav-links{position:fixed;top:70px;right:12px;width:160px;background:linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);flex-direction:column;padding:12px;gap:8px;display:none;z-index:999;overflow-y:auto;border-radius:12px;border:1px solid rgba(88,166,255,0.2);box-shadow:0 4px 16px rgba(0,0,0,0.5);animation:slideDown 0.3s ease}
@@ -65,7 +79,7 @@
             <nav class="navbar">
                 <a class="logo" href="index.html">
                     <span class="mark">SM</span>
-                    <span>Samuele</span>
+                    <span style="font-weight:700; letter-spacing:1px; font-size:1.2em; color:#fff">Samuele</span>
                 </a>
                 <div class="nav-links" id="navLinks">
                     <a href="index.html">Home</a>
@@ -84,55 +98,115 @@
         <main class="container">
             <section class="card">
                 <h1>Chi sono</h1>
-                    <p><strong>Samuele Mesoraca - 14 luglio 2004<br></strong></p>
-                    <p>
-                    Mi chiamo Samuele Mesoraca, ho 21 anni e sono una persona curiosa e orientata alla crescita.
-                    Mi appassiona capire come funzionano le cose: dalla tecnologia ai sistemi organizzativi,
-                    cerco sempre di analizzare i problemi e trovare soluzioni pratiche e strutturate.
-                    </p>
-                    <p>
-                    Nel tempo ho sviluppato interesse per la programmazione e i progetti digitali,
-                    lavorando su applicazioni, sistemi multiplayer e strumenti di automazione.
-                    Per me programmare non significa solo scrivere codice, ma ragionare,
-                    scomporre problemi e costruire qualcosa che rimanga stabile nel tempo.
-                    </p>
-                    <p>
-                    Le diverse esperienze lavorative mi hanno abituato ad adattarmi a contesti molto differenti:
-                    dal contatto diretto con il pubblico alla gestione di dati, fino al lavoro operativo e logistico.
-                    Questo mi ha insegnato responsabilità, precisione e capacità di lavorare sotto pressione
-                    mantenendo sempre organizzazione e metodo.
-                    </p>
-                    <p>
-                    Nel tempo libero coltivo diverse passioni: suono la chitarra da molti anni,
-                    mi alleno in palestra e continuo a sperimentare con progetti informatici personali.
-                    Mi piace anche seguire community online e approfondire nuove tecnologie,
-                    unendo creatività e logica.
-                    </p>
-                    <p>
-                    Sono una persona paziente, concreta e determinata.
-                    Affronto ciò che faccio con serietà ma anche con voglia di migliorare costantemente,
-                    cercando sempre di imparare qualcosa da ogni esperienza.
-                    </p>
+                <p><strong>Junior Software Developer<br></strong></p>
+                <p>
+                    Ciao, sono Samuele Mesoraca, classe 2004. Sono uno sviluppatore software junior con un approccio pratico e orientato alla logica.
+                    Mi piace capire come funzionano i sistemi e costruire soluzioni stabili e mantenibili,
+                    curando struttura del codice, debugging e miglioramento continuo.
+                </p>
+                <p>
+                    Negli ultimi anni ho lavorato su progetti personali che mi hanno portato a sviluppare backend,
+                    automazioni e sistemi multiplayer, affrontando problemi reali e imparando a organizzarne
+                    la soluzione in modo chiaro e scalabile.
+                </p>
+                <p>
+                    Nel tempo libero coltivo passioni come chitarra e palestra, che mi aiutano a mantenere costanza
+                    e disciplina. Mi piace anche sperimentare nuove tecnologie e migliorare continuamente
+                    le mie competenze attraverso la pratica.
+                </p>
+                <p>
+                    Attualmente cerco opportunità come Junior Developer dove poter crescere rapidamente,
+                    mettere in pratica ciò che so e contribuire concretamente ai progetti.
+                </p>
+
+            </section>
+                        <section class="card">
+                <h1>Competenze</h1>
+                <div class="skills-grid">
+                    <div class="skills-groups" style="margin-bottom:0;">
+                        <div style="display:flex;flex-direction:column;gap:22px;align-items:center;">
+                            <div style="width:100%;max-width:600px;">
+                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Linguaggi</h3>
+                                <div class="skills-grid">
+                                    <span class="skill-badge">Python</span>
+                                    <span class="skill-badge">Java</span>
+                                    <span class="skill-badge">JavaScript</span>
+                                    <span class="skill-badge">TypeScript</span>
+                                    <span class="skill-badge">SQL</span>
+                                </div>
+                            </div>
+                            <div style="width:100%;max-width:600px;">
+                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Backend</h3>
+                                <div class="skills-grid">
+                                    <span class="skill-badge">Node.js</span>
+                                    <span class="skill-badge">Express</span>
+                                    <span class="skill-badge">API REST</span>
+                                    <span class="skill-badge">MVC Pattern</span>
+                                </div>
+                            </div>
+                            <div style="width:100%;max-width:600px;">
+                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Frontend</h3>
+                                <div class="skills-grid">
+                                    <span class="skill-badge">HTML5</span>
+                                    <span class="skill-badge">CSS3</span>
+                                    <span class="skill-badge">React</span>
+                                    <span class="skill-badge">Bootstrap</span>
+                                    <span class="skill-badge">UI/UX</span>
+                                    <span class="skill-badge">Responsive Design</span>
+                                </div>
+                            </div>
+                            <div style="width:100%;max-width:600px;">
+                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Strumenti</h3>
+                                <div class="skills-grid">
+                                    <span class="skill-badge">Git</span>
+                                    <span class="skill-badge">Maven</span>
+                                    <span class="skill-badge">Linux</span>
+                                    <span class="skill-badge">CLI</span>
+                                </div>
+                            </div>
+                            <div style="width:100%;max-width:600px;">
+                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Ingegneria</h3>
+                                <div class="skills-grid">
+                                    <span class="skill-badge">OOP</span>
+                                    <span class="skill-badge">Data Structures</span>
+                                    <span class="skill-badge">Algorithms</span>
+                                    <span class="skill-badge">Debugging</span>
+                                    <span class="skill-badge">Testing</span>
+                                    <span class="skill-badge">Agile</span>
+                                </div>
+                            </div>
+                            <div style="width:100%;max-width:600px;">
+                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">AI</h3>
+                                <div class="skills-grid">
+                                    <span class="skill-badge">AI Tools</span>
+                                    <span class="skill-badge">Prompt Engineering</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </section>
 
             <section class="card">
                 <h1>Formazione Tecnica</h1>
                 <ul>
-                    <li><strong>Sviluppo Frontend con JavaScript e React</strong> — HTML5, CSS3, JavaScript moderno, React e component-based architecture</li>
-                    <li><strong>Sviluppo con Python</strong> — Fondamenti, OOP, strutture dati, file handling, data processing</li>
-                    <li><strong>Logiche di Programmazione e Basi OOP</strong> — Algoritmi, design patterns, Java introduction</li>
-                    <li><strong>Database e Tecnologie di Accesso ai Dati</strong> — SQL, modellazione relazionale, CRUD operations</li>
-                    <li><strong>Architetture Informatiche, Sistemi Operativi e IT Security</strong> — Networking, protocolli, security fundamentals</li>
-                    <li><strong>Analisi Dati e Statistica</strong> — Data analysis, visualizzazione, metriche statistiche</li>
+                    <li><strong>Frontend</strong> — HTML, CSS, JavaScript moderno, React, componenti riutilizzabili e gestione interfacce utente</li>
+                    <li><strong>Backend</strong> — Python, OOP, gestione dati, lettura/scrittura file, logica server e automazione</li>
+                    <li><strong>Programmazione</strong> — algoritmi, problem solving, strutturazione del codice e debugging</li>
+                    <li><strong>Database</strong> — SQL, modellazione relazionale e operazioni CRUD</li>
+                    <li><strong>Sistemi e Reti</strong> — basi di networking, protocolli e fondamenti di sicurezza informatica</li>
+                    <li><strong>Dati</strong> — analisi dati e utilizzo di metriche statistiche di base</li>
                 </ul>
+
             </section>
 
             <section class="card">
                 <h1>Formazione</h1>
                 <ul>
-                    <li><strong>IFOA: Software developer con strumenti AI</strong> — Formazione tecnica in sviluppo software con approccio AI-assisted</li>
-                    <li><strong>Qualifica triennale come Assistente Commerciale</strong> — Istituto Professionale Servizi Commerciali "Filippo Re"</li>
-                    <li><strong>Diploma Istituto Professionale (5 anni)</strong> — Servizi Commerciali, Istituto Professionale "Filippo Re"</li>
+                    <li><strong>IFOA: Software developer con strumenti AI (Attuale)</strong> — Formazione tecnica in sviluppo software con approccio AI-assisted</li>
+                    <li><strong>Qualifica triennale come Assistente Commerciale (2023)</strong> — Istituto Professionale Servizi Commerciali "Filippo Re"</li>
+                    <li><strong>Diploma Istituto Professionale (2019-2024)</strong> — Servizi Commerciali, Istituto Professionale "Filippo Re"</li>
                 </ul>
             </section>
 
@@ -141,28 +215,9 @@
                 <ul>
                     <li><strong>Italiano</strong> — Lingua madre</li>
                     <li><strong>Inglese</strong> — Livello B2 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
-                    <li><strong>Francese</strong> — Livello B1 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
+                    <li><strong>Francese</strong> — Livello A2 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
                 </ul>
             </section>
-
-            <section class="card">
-                <h1>Competenze</h1>
-                <div class="skills-grid">
-                    <span class="skill-badge">Python</span>
-                    <span class="skill-badge">JavaScript</span>
-                    <span class="skill-badge">React</span>
-                    <span class="skill-badge">HTML5</span>
-                    <span class="skill-badge">CSS3</span>
-                    <span class="skill-badge">Java</span>
-                    <span class="skill-badge">SQL</span>
-                    <span class="skill-badge">OOP</span>
-                    <span class="skill-badge">Git</span>
-                    <span class="skill-badge">Problem Solving</span>
-                    <span class="skill-badge">Data Analysis</span>
-                    <span class="skill-badge">API REST</span>
-                </div>
-            </section>
-
             <div class="cv-download">
                 <a href="cv.pdf" download class="cv-button">Scarica CV</a>
             </div>
