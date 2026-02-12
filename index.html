@@ -20,6 +20,7 @@
                 --glow: rgba(95,168,255,0.35);
             }
             *{box-sizing:border-box}
+            *{scrollbar-width:thin;scrollbar-color:#2a3c55 #0b0f15}
             body{font-family:"Source Sans 3", "Segoe UI", Arial, sans-serif; margin:0; color:var(--text); background:
                 radial-gradient(900px 600px at 10% -10%, rgba(95,168,255,0.18), transparent 55%),
                 radial-gradient(600px 500px at 90% 10%, rgba(122,229,130,0.14), transparent 60%),
@@ -39,11 +40,11 @@
             .logo-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
             .logo-name{font-weight:700;letter-spacing:0.6px;font-size:1.15em;color:#fff}
             .logo-sub{font-size:0.72em;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
-            .logo .mark{width:48px;height:48px;background:var(--accent);color:#07210d;border-radius:12px;display:inline-grid;place-items:center;font-size:18px;box-shadow:0 10px 24px rgba(122,229,130,0.28)}
+            .logo .mark{width:48px;height:48px;background:#0b0f15;color:#fff;border-radius:12px;display:inline-grid;place-items:center;font-size:18px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 10px 24px rgba(0,0,0,0.45);animation:logoFloat 6s ease-in-out infinite}
             .nav-links{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:8px}
             .nav-links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:999px;background:rgba(30,40,60,0.5);border:1px solid rgba(95,168,255,0.25)}
             .nav-links a:hover{transform:translateY(-3px);box-shadow:0 8px 18px var(--glow)}
-            .cta{background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;}
+            .cta{background:linear-gradient(90deg,var(--accent),#7fd1ff);background-size:200% 200%;color:#062012;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;animation:gradientShift 6s ease infinite, buttonGlow 6s ease-in-out infinite;}
             .hamburger{display:none;border:0;background:transparent;padding:8px;cursor:pointer;z-index:1001;position:relative}
             .hamburger span{display:block;width:22px;height:3px;background:var(--text);margin:4px 0;border-radius:3px;transition:all 0.3s ease}
             .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(10px, 10px)}
@@ -55,18 +56,20 @@
             @keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
             @keyframes slideOutRight{from{transform:translateX(0)}to{transform:translateX(100%)}}
             .container{max-width:1040px;margin:28px auto 64px;padding:0 18px}
-            .card{background:var(--card-bg);border-radius:20px;padding:24px;box-shadow:0 18px 40px rgba(0,0,0,0.45);border:1px solid rgba(95,168,255,0.15); margin-top: 16px;backdrop-filter:blur(8px)}
+            .card{background:var(--card-bg);border-radius:20px;padding:24px;box-shadow:0 18px 40px rgba(0,0,0,0.45);border:1px solid rgba(95,168,255,0.15); margin-top: 16px;backdrop-filter:blur(8px);transition:transform 0.2s ease, box-shadow 0.2s ease}
+            .card:hover{transform:translateY(-2px);box-shadow:0 22px 48px rgba(0,0,0,0.45)}
             h1, h2, h3{font-family:"Space Grotesk", "Segoe UI", Arial, sans-serif;letter-spacing:0.2px}
             h1{font-size:32px;margin:6px 0;color:var(--primary)}
             h2{color:var(--accent);margin:6px 0}
             p{line-height:1.7;color:var(--text)}
             ul{padding-left:1.2rem}
             .skills-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-            .skill-badge{display:inline-block;background:rgba(95,168,255,0.12);border:1px solid rgba(95,168,255,0.28);color:var(--accent);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600}
+            .skill-badge{display:inline-block;background:rgba(95,168,255,0.12);border:1px solid rgba(95,168,255,0.28);color:var(--accent);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;transition:transform 0.2s ease, box-shadow 0.2s ease}
+            .skill-badge:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(95,168,255,0.2)}
             .skills-grid .skill-badge:nth-child(odd){border-color:rgba(122,229,130,0.35);color:var(--accent)}
             .cv-download{display:flex;justify-content:center;margin:24px 0;flex-direction:column;align-items:center;gap:10px}
             .cv-download.secondary{margin:14px 0 0 0}
-            .cv-button{display:inline-block;background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:12px 30px;border-radius:999px;text-decoration:none;font-weight:700;transition:all 0.3s ease;border:none;cursor:pointer;font-size:16px;box-shadow:0 8px 22px rgba(122,229,130,0.25)}
+            .cv-button{display:inline-block;background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:12px 30px;border-radius:999px;text-decoration:none;font-weight:700;transition:all 0.3s ease;border:none;cursor:pointer;font-size:16px;box-shadow:0 8px 22px rgba(122,229,130,0.25);animation:buttonGlow 6s ease-in-out infinite}
             .cv-button:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(95,168,255,0.3)}
             .cv-note{margin:0;color:var(--muted);font-size:14px}
             .cv-button.secondary{font-size:14px;padding:10px 22px;box-shadow:0 6px 16px rgba(122,229,130,0.2)}
@@ -76,7 +79,7 @@
             .cv-modal-title{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;color:var(--primary);margin-bottom:8px}
             .cv-modal-text{margin:0 0 16px 0;color:var(--text)}
             .cv-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-            .cv-action{background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;border:none}
+            .cv-action{background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;border:none;animation:buttonGlow 6s ease-in-out infinite}
             .cv-close{background:transparent;color:var(--text);border:1px solid rgba(95,168,255,0.3);padding:8px 14px;border-radius:999px;font-weight:600;cursor:pointer}
             a{color:var(--primary);text-decoration:none;border-bottom:2px solid transparent;transition:all 0.3s ease;padding-bottom:2px}
             a:hover{border-bottom-color:var(--primary);color:var(--accent);text-shadow:0 0 10px var(--glow)}
@@ -88,8 +91,12 @@
             .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px;align-items:center}
             .hero-title{font-size:40px;line-height:1.1;margin:0 0 8px 0}
             .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(95,168,255,0.15);border:1px solid rgba(95,168,255,0.35);color:var(--text);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:12px}
-            .hero-card{background:linear-gradient(140deg, rgba(95,168,255,0.15), rgba(122,229,130,0.12));border:1px solid rgba(95,168,255,0.2);padding:16px;border-radius:16px}
+            .hero-card{background:linear-gradient(140deg, rgba(95,168,255,0.15), rgba(122,229,130,0.12));border:1px solid rgba(95,168,255,0.2);padding:16px;border-radius:16px;animation:cardPulse 7s ease-in-out infinite}
             .hero-card-text{margin:0 0 12px 0}
+            .hero-avatar{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+            .hero-avatar img{width:72px;height:72px;border-radius:50%;border:2px solid rgba(95,168,255,0.35);box-shadow:0 10px 22px rgba(0,0,0,0.35);object-fit:cover}
+            .hero-avatar-name{font-weight:700;color:var(--text)}
+            .hero-avatar-role{font-size:13px;color:var(--muted)}
             .section-label{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-bottom:8px}
             .card-title{display:flex;align-items:center;gap:10px;margin-bottom:4px}
             .card-title-text{margin:0}
@@ -101,11 +108,16 @@
             .projects-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;margin-top:12px}
             .project-card{background:rgba(18,25,38,0.6);border:1px solid rgba(95,168,255,0.18);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:180px;transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease}
             .project-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,0.35);border-color:rgba(122,229,130,0.35)}
-            .project-title{font-family:"Space Grotesk", "Segoe UI", Arial, sans-serif;font-size:18px;margin:0;color:var(--text)}
+            .project-title{font-family:"Space Grotesk", "Segoe UI", Arial, sans-serif;font-size:18px;margin:0;color:var(--text);transition:color 0.2s ease}
+            .project-card:hover .project-title{color:var(--primary)}
             .project-meta{color:var(--muted);font-size:13px}
             .project-tags{display:flex;flex-wrap:wrap;gap:6px}
-            .project-tag{background:rgba(95,168,255,0.14);border:1px solid rgba(95,168,255,0.25);color:var(--text);padding:3px 8px;border-radius:999px;font-size:12px}
-            .project-link{margin-top:auto;font-weight:600}
+            .project-tag{background:rgba(95,168,255,0.14);border:1px solid rgba(95,168,255,0.25);color:var(--text);padding:3px 8px;border-radius:999px;font-size:12px;transition:transform 0.2s ease, box-shadow 0.2s ease}
+            .project-tag:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(95,168,255,0.2)}
+            .project-link{margin-top:auto;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:transform 0.2s ease}
+            .project-link::after{content:"->";transition:transform 0.2s ease}
+            .project-link:hover{transform:translateX(2px)}
+            .project-link:hover::after{transform:translateX(2px)}
             .cta-section{background:linear-gradient(140deg, rgba(95,168,255,0.15), rgba(122,229,130,0.12));border:1px solid rgba(95,168,255,0.2);border-radius:20px;padding:22px;display:grid;gap:12px;align-items:center;text-align:center}
             .cta-title{margin:0;color:var(--text);font-size:26px}
             .cta-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
@@ -118,6 +130,17 @@
             .reveal.delay-4{animation-delay:0.4s}
             .reveal.delay-5{animation-delay:0.5s}
             @keyframes reveal{to{opacity:1;transform:translateY(0)}}
+            @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+            @keyframes cardPulse{0%,100%{box-shadow:0 0 0 rgba(95,168,255,0)}50%{box-shadow:0 12px 26px rgba(95,168,255,0.2)}}
+            @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+            @keyframes buttonGlow{0%,100%{box-shadow:0 8px 22px rgba(122,229,130,0.18)}50%{box-shadow:0 12px 28px rgba(95,168,255,0.28)}}
+            ::-webkit-scrollbar{width:10px}
+            ::-webkit-scrollbar-track{background:#0b0f15}
+            ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#1e2a3b,#2f4460);border-radius:999px;border:2px solid #0b0f15}
+            ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#2a3c55,#3a5576)}
+            @media (prefers-reduced-motion: reduce){
+                *{animation:none!important;transition:none!important}
+            }
             @media (max-width:700px){
                 .navbar{position:relative;z-index:1000}
                 .nav-links{position:fixed;top:70px;right:12px;width:160px;background:linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);flex-direction:column;padding:12px;gap:8px;display:none;z-index:999;overflow-y:auto;border-radius:12px;border:1px solid rgba(88,166,255,0.2);box-shadow:0 4px 16px rgba(0,0,0,0.5);animation:slideDown 0.3s ease}
@@ -141,10 +164,11 @@
             <nav class="navbar">
                 <a class="logo" href="index.html">
                     <span class="mark logo-mark">
-                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="44" height="44" rx="12" fill="var(--accent)"/>
-                            <path d="M12 30 L22 14 L32 30" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="22" cy="12" r="3" fill="var(--primary)"/>
+                        <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="44" height="44" rx="12" fill="none"/>
+                            <path d="M15 14 L6 22 L15 30" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M29 14 L38 22 L29 30" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M25 12 L19 32" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
                         </svg>
                     </span>
                     <span class="logo-text">
@@ -180,6 +204,13 @@
                         </p>
                     </div>
                     <div class="hero-card">
+                        <div class="hero-avatar">
+                            <img src="https://avatars.githubusercontent.com/u/74597166?v=4" alt="Samuele Mesoraca" />
+                            <div>
+                                <div class="hero-avatar-name">Samuele Mesoraca</div>
+                                <div class="hero-avatar-role">Junior Developer</div>
+                            </div>
+                        </div>
                         <div class="section-label">Focus</div>
                         <p class="hero-card-text">Backend, automazioni e web app con codice pulito e testabile.</p>
                         <div class="skills-grid">
