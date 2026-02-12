@@ -5,33 +5,45 @@
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>Home — Samuele Mesoraca</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
         <style>
             :root{
                 --bg:#0f1419;
-                --accent:#b7e4a3;
-                --accent2:#ffd93d;
-                --primary:#58a6ff;
-                --text:#e6edf3;
-                --muted:#8b949e;
-                --card-bg: rgba(13,17,23,0.8);
+                --surface:#121926;
+                --accent:#7ae582;
+                --primary:#5fa8ff;
+                --text:#eef2f6;
+                --muted:#9aa5b1;
+                --card-bg: rgba(18,25,38,0.86);
+                --glow: rgba(95,168,255,0.35);
             }
-            body{font-family:Segoe UI, Roboto, Arial, sans-serif; margin:0; color:var(--text); background:
-                linear-gradient(135deg, rgba(183,228,163,0.04) 0%, rgba(88,166,255,0.03) 100%),
-                #0f1419}
+            *{box-sizing:border-box}
+            body{font-family:"Source Sans 3", "Segoe UI", Arial, sans-serif; margin:0; color:var(--text); background:
+                radial-gradient(900px 600px at 10% -10%, rgba(95,168,255,0.18), transparent 55%),
+                radial-gradient(600px 500px at 90% 10%, rgba(122,229,130,0.14), transparent 60%),
+                linear-gradient(180deg, #0f1419 0%, #0b0f15 100%);
+                min-height:100vh;
+            }
             .header-container{background:transparent;padding:18px 0}
-            .navbar{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px;gap:8px}
-            .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--primary);text-decoration:none;justify-content:center;margin-bottom:8px}
+            .navbar{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px;gap:10px}
+            .logo{display:flex;align-items:center;gap:14px;font-weight:800;color:var(--primary);text-decoration:none;justify-content:center;margin-bottom:6px}
             .logo, .logo:hover, .logo:focus, .logo:active {
                 border-bottom: none !important;
                 text-decoration: none !important;
                 box-shadow: none !important;
                 outline: none !important;
             }
-            .logo .mark{width:44px;height:44px;background:var(--accent);color:#07210d;border-radius:10px;display:inline-grid;place-items:center;font-size:18px;box-shadow:0 8px 16px rgba(183,228,163,0.3)}
+            .logo-mark{padding:0}
+            .logo-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+            .logo-name{font-weight:700;letter-spacing:0.6px;font-size:1.15em;color:#fff}
+            .logo-sub{font-size:0.72em;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
+            .logo .mark{width:48px;height:48px;background:var(--accent);color:#07210d;border-radius:12px;display:inline-grid;place-items:center;font-size:18px;box-shadow:0 10px 24px rgba(122,229,130,0.28)}
             .nav-links{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:8px}
-            .nav-links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:12px;background:rgba(30,40,60,0.5);border:1px solid rgba(88,166,255,0.2)}
-            .nav-links a:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(88,166,255,0.2)}
-            .cta{background:linear-gradient(90deg,var(--accent),#ff8a66);color:white;padding:8px 14px;border-radius:999px;text-decoration:none;}
+            .nav-links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:999px;background:rgba(30,40,60,0.5);border:1px solid rgba(95,168,255,0.25)}
+            .nav-links a:hover{transform:translateY(-3px);box-shadow:0 8px 18px var(--glow)}
+            .cta{background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;}
             .hamburger{display:none;border:0;background:transparent;padding:8px;cursor:pointer;z-index:1001;position:relative}
             .hamburger span{display:block;width:22px;height:3px;background:var(--text);margin:4px 0;border-radius:3px;transition:all 0.3s ease}
             .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(10px, 10px)}
@@ -42,25 +54,70 @@
             @keyframes fadeIn{from{opacity:0}to{opacity:1}}
             @keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
             @keyframes slideOutRight{from{transform:translateX(0)}to{transform:translateX(100%)}}
-            .container{max-width:1000px;margin:24px auto;padding:0 16px}
-            .card{background:var(--card-bg);border-radius:18px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,0.5);border:1px solid rgba(88,166,255,0.1); margin-top: 15px}
-            h1{font-size:34px;margin:6px 0;color:var(--primary)}
-            h2{color:var(--accent2);margin:6px 0}
-            p{line-height:1.6;color:var(--text)}
+            .container{max-width:1040px;margin:28px auto 64px;padding:0 18px}
+            .card{background:var(--card-bg);border-radius:20px;padding:24px;box-shadow:0 18px 40px rgba(0,0,0,0.45);border:1px solid rgba(95,168,255,0.15); margin-top: 16px;backdrop-filter:blur(8px)}
+            h1, h2, h3{font-family:"Space Grotesk", "Segoe UI", Arial, sans-serif;letter-spacing:0.2px}
+            h1{font-size:32px;margin:6px 0;color:var(--primary)}
+            h2{color:var(--accent);margin:6px 0}
+            p{line-height:1.7;color:var(--text)}
             ul{padding-left:1.2rem}
             .skills-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-            .skill-badge{display:inline-block;background:rgba(88,166,255,0.15);border:1px solid rgba(88,166,255,0.3);color:var(--accent);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:500}
-            .skills-grid .skill-badge:nth-child(odd){border-color:rgba(183,228,163,0.3);color:var(--accent)}
-            .cv-download{display:flex;justify-content:center;margin:24px 0}
-            .cv-button{display:inline-block;background:linear-gradient(90deg,var(--accent),#9fe2b7);color:#07210d;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s ease;border:none;cursor:pointer;font-size:16px}
-            .cv-button:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(183,228,163,0.3)}
+            .skill-badge{display:inline-block;background:rgba(95,168,255,0.12);border:1px solid rgba(95,168,255,0.28);color:var(--accent);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600}
+            .skills-grid .skill-badge:nth-child(odd){border-color:rgba(122,229,130,0.35);color:var(--accent)}
+            .cv-download{display:flex;justify-content:center;margin:24px 0;flex-direction:column;align-items:center;gap:10px}
+            .cv-download.secondary{margin:14px 0 0 0}
+            .cv-button{display:inline-block;background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:12px 30px;border-radius:999px;text-decoration:none;font-weight:700;transition:all 0.3s ease;border:none;cursor:pointer;font-size:16px;box-shadow:0 8px 22px rgba(122,229,130,0.25)}
+            .cv-button:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(95,168,255,0.3)}
+            .cv-note{margin:0;color:var(--muted);font-size:14px}
+            .cv-button.secondary{font-size:14px;padding:10px 22px;box-shadow:0 6px 16px rgba(122,229,130,0.2)}
+            .cv-note.secondary{font-size:13px}
+            .cv-overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:2000;background:rgba(6,10,16,0.55);justify-content:center;align-items:center;backdrop-filter:blur(6px)}
+            .cv-modal{background:var(--card-bg);color:var(--text);padding:20px 24px;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,0.45);font-size:1.05em;position:relative;min-width:260px;text-align:center;border:1px solid rgba(95,168,255,0.25);max-width:90vw}
+            .cv-modal-title{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;color:var(--primary);margin-bottom:8px}
+            .cv-modal-text{margin:0 0 16px 0;color:var(--text)}
+            .cv-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+            .cv-action{background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;border:none}
+            .cv-close{background:transparent;color:var(--text);border:1px solid rgba(95,168,255,0.3);padding:8px 14px;border-radius:999px;font-weight:600;cursor:pointer}
             a{color:var(--primary);text-decoration:none;border-bottom:2px solid transparent;transition:all 0.3s ease;padding-bottom:2px}
-            a:hover{border-bottom-color:var(--primary);color:var(--accent);text-shadow:0 0 8px rgba(88,166,255,0.3)}
+            a:hover{border-bottom-color:var(--primary);color:var(--accent);text-shadow:0 0 10px var(--glow)}
             .card a{color:var(--primary);font-weight:500}
-            .card a:hover{color:var(--accent2);border-bottom-color:var(--accent2)}
+            .card a:hover{color:var(--accent);border-bottom-color:var(--accent)}
             .info-item{display:flex;align-items:center;gap:12px;margin:12px 0;font-size:15px}
             .info-item i{width:24px;height:24px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
             .info-item svg{width:24px;height:24px;flex-shrink:0;stroke:var(--primary);fill:none;stroke-width:2}
+            .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px;align-items:center}
+            .hero-title{font-size:40px;line-height:1.1;margin:0 0 8px 0}
+            .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(95,168,255,0.15);border:1px solid rgba(95,168,255,0.35);color:var(--text);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:12px}
+            .hero-card{background:linear-gradient(140deg, rgba(95,168,255,0.15), rgba(122,229,130,0.12));border:1px solid rgba(95,168,255,0.2);padding:16px;border-radius:16px}
+            .hero-card-text{margin:0 0 12px 0}
+            .section-label{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-bottom:8px}
+            .card-title{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+            .card-title-text{margin:0}
+            .skills-groups{margin-bottom:0}
+            .skills-group-stack{display:flex;flex-direction:column;gap:22px;align-items:center}
+            .skills-group{width:100%;max-width:600px}
+            .skills-group-title{font-size:1em;color:var(--accent);margin-bottom:10px;margin-top:0;text-align:left}
+            .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+            .projects-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;margin-top:12px}
+            .project-card{background:rgba(18,25,38,0.6);border:1px solid rgba(95,168,255,0.18);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:180px;transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease}
+            .project-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,0.35);border-color:rgba(122,229,130,0.35)}
+            .project-title{font-family:"Space Grotesk", "Segoe UI", Arial, sans-serif;font-size:18px;margin:0;color:var(--text)}
+            .project-meta{color:var(--muted);font-size:13px}
+            .project-tags{display:flex;flex-wrap:wrap;gap:6px}
+            .project-tag{background:rgba(95,168,255,0.14);border:1px solid rgba(95,168,255,0.25);color:var(--text);padding:3px 8px;border-radius:999px;font-size:12px}
+            .project-link{margin-top:auto;font-weight:600}
+            .cta-section{background:linear-gradient(140deg, rgba(95,168,255,0.15), rgba(122,229,130,0.12));border:1px solid rgba(95,168,255,0.2);border-radius:20px;padding:22px;display:grid;gap:12px;align-items:center;text-align:center}
+            .cta-title{margin:0;color:var(--text);font-size:26px}
+            .cta-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+            .cta-link{background:rgba(18,25,38,0.7);border:1px solid rgba(95,168,255,0.3);color:var(--text);padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:600}
+            .cta-link.primary{background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;border:none}
+            .reveal{opacity:0;transform:translateY(10px);animation:reveal 0.7s ease forwards}
+            .reveal.delay-1{animation-delay:0.1s}
+            .reveal.delay-2{animation-delay:0.2s}
+            .reveal.delay-3{animation-delay:0.3s}
+            .reveal.delay-4{animation-delay:0.4s}
+            .reveal.delay-5{animation-delay:0.5s}
+            @keyframes reveal{to{opacity:1;transform:translateY(0)}}
             @media (max-width:700px){
                 .navbar{position:relative;z-index:1000}
                 .nav-links{position:fixed;top:70px;right:12px;width:160px;background:linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);flex-direction:column;padding:12px;gap:8px;display:none;z-index:999;overflow-y:auto;border-radius:12px;border:1px solid rgba(88,166,255,0.2);box-shadow:0 4px 16px rgba(0,0,0,0.5);animation:slideDown 0.3s ease}
@@ -68,9 +125,14 @@
                 .nav-links.open{display:flex}
                 .nav-links a{width:100%;text-align:center;padding:8px;border-radius:8px;background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);font-size:13px;transition:all 0.2s ease}
                 .nav-links a:active{transform:scale(0.95);background:rgba(88,166,255,0.15)}
-                .nav-links a.cta{background:linear-gradient(90deg,var(--accent),#9fe2b7);color:#07210d;border:none;font-weight:600}
+                .nav-links a.cta{background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;border:none;font-weight:700}
                 .hamburger{display:block}
                 .header-container{position:sticky;top:0;z-index:999;background:linear-gradient(135deg, rgba(15,20,25,0.95) 0%, rgba(13,17,23,0.95) 100%);backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+                .hero{grid-template-columns:1fr}
+                .hero-title{font-size:32px}
+                .grid-2{grid-template-columns:1fr}
+                .projects-grid{grid-template-columns:1fr}
+                .cta-section{text-align:left}
             }
         </style>
     </head>
@@ -78,18 +140,17 @@
         <header class="header-container">
             <nav class="navbar">
                 <a class="logo" href="index.html">
-                    <span class="mark" style="padding:0">
+                    <span class="mark logo-mark">
                         <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="44" height="44" rx="10" fill="var(--accent)"/>
-                            <rect x="12" y="12" width="20" height="20" rx="5" fill="#fff" stroke="var(--primary)" stroke-width="2"/>
-                            <rect x="18" y="18" width="8" height="8" rx="2" fill="var(--primary)"/>
-                            <rect x="21" y="7" width="2" height="6" rx="1" fill="var(--primary)"/>
-                            <rect x="21" y="31" width="2" height="6" rx="1" fill="var(--primary)"/>
-                            <rect x="7" y="21" width="6" height="2" rx="1" fill="var(--primary)"/>
-                            <rect x="31" y="21" width="6" height="2" rx="1" fill="var(--primary)"/>
+                            <rect width="44" height="44" rx="12" fill="var(--accent)"/>
+                            <path d="M12 30 L22 14 L32 30" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="22" cy="12" r="3" fill="var(--primary)"/>
                         </svg>
                     </span>
-                    <span style="font-weight:700; letter-spacing:1px; font-size:1.2em; color:#fff">Samuele</span>
+                    <span class="logo-text">
+                        <span class="logo-name">Samuele</span>
+                        <span class="logo-sub">Junior Developer</span>
+                    </span>
                 </a>
                 <div class="nav-links" id="navLinks">
                     <a href="index.html">Home</a>
@@ -106,23 +167,37 @@
         </header>
 
         <main class="container">
-            <section class="card">
-                <h1>Chi sono</h1>
-                <p><strong>Samuele Mesoraca<br></strong></p>
-                <p>
-                    Sviluppatore software junior con approccio pratico alla progettazione di applicazioni stabili e manutenibili.<br>
-                    Ho realizzato backend, automazioni e sistemi multiplayer organizzando il codice in modo scalabile e strutturato.
-                    <br>Lavoro principalmente con Python, Java e tecnologie web moderne, con attenzione a debugging, struttura del codice e miglioramento continuo.
-                    Disponibile per ruoli Junior Developer con contributo attivo allo sviluppo software.
-                </p>
+            <section class="card reveal">
+                <div class="hero">
+                    <div>
+                        <div class="hero-badge"><i class="fa-solid fa-code"></i> Junior Developer</div>
+                        <h1 class="hero-title">Ciao, sono Samuele Mesoraca</h1>
+                        <p>
+                            Sviluppatore software junior con approccio pratico alla progettazione di applicazioni stabili e manutenibili.
+                            Ho realizzato backend, automazioni e sistemi multiplayer organizzando il codice in modo scalabile e strutturato.
+                            Lavoro principalmente con Python, Java e tecnologie web moderne, con attenzione a debugging, struttura del codice e miglioramento continuo.
+                            Disponibile per ruoli Junior Developer con contributo attivo allo sviluppo software.
+                        </p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="section-label">Focus</div>
+                        <p class="hero-card-text">Backend, automazioni e web app con codice pulito e testabile.</p>
+                        <div class="skills-grid">
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Java</span>
+                            <span class="skill-badge">API REST</span>
+                            <span class="skill-badge">React</span>
+                        </div>
+                    </div>
+                </div>
             </section>
-                        <section class="card">
-                <h1>Competenze</h1>
+            <section class="card reveal delay-1">
+                <div class="card-title"><h1 class="card-title-text">Competenze</h1></div>
                 <div class="skills-grid">
-                    <div class="skills-groups" style="margin-bottom:0;">
-                        <div style="display:flex;flex-direction:column;gap:22px;align-items:center;">
-                            <div style="width:100%;max-width:600px;">
-                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Linguaggi</h3>
+                    <div class="skills-groups">
+                        <div class="skills-group-stack">
+                            <div class="skills-group">
+                                <h3 class="skills-group-title">Linguaggi</h3>
                                 <div class="skills-grid">
                                     <span class="skill-badge">Python</span>
                                     <span class="skill-badge">Java</span>
@@ -131,8 +206,8 @@
                                     <span class="skill-badge">SQL</span>
                                 </div>
                             </div>
-                            <div style="width:100%;max-width:600px;">
-                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Backend</h3>
+                            <div class="skills-group">
+                                <h3 class="skills-group-title">Backend</h3>
                                 <div class="skills-grid">
                                     <span class="skill-badge">Node.js</span>
                                     <span class="skill-badge">Express</span>
@@ -140,8 +215,8 @@
                                     <span class="skill-badge">MVC Pattern</span>
                                 </div>
                             </div>
-                            <div style="width:100%;max-width:600px;">
-                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Frontend</h3>
+                            <div class="skills-group">
+                                <h3 class="skills-group-title">Frontend</h3>
                                 <div class="skills-grid">
                                     <span class="skill-badge">HTML5</span>
                                     <span class="skill-badge">CSS3</span>
@@ -151,8 +226,8 @@
                                     <span class="skill-badge">Responsive Design</span>
                                 </div>
                             </div>
-                            <div style="width:100%;max-width:600px;">
-                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Strumenti</h3>
+                            <div class="skills-group">
+                                <h3 class="skills-group-title">Strumenti</h3>
                                 <div class="skills-grid">
                                     <span class="skill-badge">Git</span>
                                     <span class="skill-badge">Maven</span>
@@ -160,8 +235,8 @@
                                     <span class="skill-badge">CLI</span>
                                 </div>
                             </div>
-                            <div style="width:100%;max-width:600px;">
-                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">Ingegneria</h3>
+                            <div class="skills-group">
+                                <h3 class="skills-group-title">Ingegneria</h3>
                                 <div class="skills-grid">
                                     <span class="skill-badge">OOP</span>
                                     <span class="skill-badge">Data Structures</span>
@@ -171,8 +246,8 @@
                                     <span class="skill-badge">Agile</span>
                                 </div>
                             </div>
-                            <div style="width:100%;max-width:600px;">
-                                <h3 style="font-size:1em;color:var(--accent2);margin-bottom:10px;margin-top:0;text-align:left;">AI</h3>
+                            <div class="skills-group">
+                                <h3 class="skills-group-title">AI</h3>
                                 <div class="skills-grid">
                                     <span class="skill-badge">AI Tools</span>
                                     <span class="skill-badge">Prompt Engineering</span>
@@ -184,42 +259,88 @@
                 </div>
             </section>
 
-            <section class="card">
-                <h1>Formazione Tecnica</h1>
-                <ul>
-                    <li><strong>Frontend</strong> — HTML, CSS, JavaScript moderno, React, componenti riutilizzabili e gestione interfacce utente</li>
-                    <li><strong>Backend</strong> — Python, OOP, gestione dati, lettura/scrittura file, logica server e automazione</li>
-                    <li><strong>Programmazione</strong> — algoritmi, problem solving, strutturazione del codice e debugging</li>
-                    <li><strong>Database</strong> — SQL, modellazione relazionale e operazioni CRUD</li>
-                    <li><strong>Sistemi e Reti</strong> — basi di networking, protocolli e fondamenti di sicurezza informatica</li>
-                    <li><strong>Dati</strong> — analisi dati e utilizzo di metriche statistiche di base</li>
-                </ul>
-
+            <section class="card reveal delay-2">
+                <div class="card-title"><h1 class="card-title-text">Progetti in evidenza</h1></div>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <h3 class="project-title">Avis WhatsApp Sender</h3>
+                        <div class="project-meta">Automazione messaggi WhatsApp</div>
+                        <p>App desktop con import Excel, filtri destinatari e invio massivo controllato via API.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Tkinter</span>
+                            <span class="project-tag">openpyxl</span>
+                        </div>
+                        <a class="project-link" href="projects.html">Vedi dettagli</a>
+                    </article>
+                    <article class="project-card">
+                        <h3 class="project-title">Roktura Website</h3>
+                        <div class="project-meta">Collaborazione frontend</div>
+                        <p>Interventi su layout, responsive e coerenza visiva per un sito informativo.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <a class="project-link" href="projects.html">Vedi dettagli</a>
+                    </article>
+                    <article class="project-card">
+                        <h3 class="project-title">Timeline Discord Bot</h3>
+                        <div class="project-meta">Bot community per server Discord</div>
+                        <p>Comandi modulari, ticketing e integrazioni API per gestione community.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">discord.js</span>
+                            <span class="project-tag">MySQL</span>
+                        </div>
+                        <a class="project-link" href="projects.html">Vedi dettagli</a>
+                    </article>
+                </div>
             </section>
 
-            <section class="card">
-                <h1>Formazione</h1>
+            <section class="card reveal delay-3">
+                <div class="grid-2">
+                    <div>
+                        <div class="card-title"><h1 class="card-title-text">Formazione Tecnica</h1></div>
+                        <ul>
+                            <li><strong>Frontend</strong> — HTML, CSS, JavaScript moderno, React, componenti riutilizzabili e gestione interfacce utente</li>
+                            <li><strong>Backend</strong> — Python, OOP, gestione dati, lettura/scrittura file, logica server e automazione</li>
+                            <li><strong>Programmazione</strong> — algoritmi, problem solving, strutturazione del codice e debugging</li>
+                            <li><strong>Database</strong> — SQL, modellazione relazionale e operazioni CRUD</li>
+                            <li><strong>Sistemi e Reti</strong> — basi di networking, protocolli e fondamenti di sicurezza informatica</li>
+                            <li><strong>Dati</strong> — analisi dati e utilizzo di metriche statistiche di base</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card-title"><h1 class="card-title-text">Lingue</h1></div>
+                        <ul>
+                            <li><strong>Italiano</strong> — Lingua madre</li>
+                            <li><strong>Inglese</strong> — Livello B2 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
+                            <li><strong>Francese</strong> — Livello A2 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card reveal delay-4">
+                <div class="card-title"><h1 class="card-title-text">Formazione</h1></div>
                 <ul>
                     <li><strong>IFOA: Software developer con strumenti AI (Attuale)</strong> — Formazione tecnica in sviluppo software con approccio AI-assisted</li>
                     <li><strong>Qualifica triennale come Assistente Commerciale (2023)</strong> — Istituto Professionale Servizi Commerciali "Filippo Re"</li>
                     <li><strong>Diploma Istituto Professionale (2019-2024)</strong> — Servizi Commerciali, Istituto Professionale "Filippo Re"</li>
                 </ul>
             </section>
-
-            <section class="card">
-                <h1>Lingue</h1>
-                <ul>
-                    <li><strong>Italiano</strong> — Lingua madre</li>
-                    <li><strong>Inglese</strong> — Livello B2 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
-                    <li><strong>Francese</strong> — Livello A2 (Lettura, Scrittura, Ascolto, Produzione orale, Interazione orale)</li>
-                </ul>
-            </section>
-            <div class="cv-download">
-                <a href="#" class="cv-button" id="cvBtnHome">Scarica CV</a>
-                <div id="cvMsgOverlayHome" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:2000;background:rgba(0,0,0,0.25);justify-content:center;align-items:center;">
-                    <div id="cvMsgHome" style="background:var(--card-bg);color:var(--primary);padding:18px 28px;border-radius:14px;box-shadow:0 4px 24px rgba(88,166,255,0.18);font-size:1.1em;position:relative;min-width:220px;text-align:center;border:1.5px solid var(--primary);max-width:90vw;">
-                        <span id="cvMsgTextHome">Per scaricare il cv scrivere un e-mail</span>
-                        <button id='closeCvMsgHome' style='position:absolute;top:6px;right:10px;background:none;border:none;font-size:1.2em;color:var(--primary);cursor:pointer;' title='Chiudi'>&times;</button>
+            <div class="cv-download secondary">
+                <a href="#" class="cv-button secondary" id="cvBtnHome">Scarica CV</a>
+                <p class="cv-note secondary">Preferisci riceverlo via e-mail? Ti rispondo in giornata.</p>
+                <div id="cvMsgOverlayHome" class="cv-overlay">
+                    <div id="cvMsgHome" class="cv-modal">
+                        <div class="cv-modal-title"><i class="fa-regular fa-paper-plane"></i> Richiedi il CV</div>
+                        <p class="cv-modal-text" id="cvMsgTextHome">Per scaricare il CV scrivimi una e-mail.</p>
+                        <div class="cv-actions">
+                            <a class="cv-action" href="contatti.html">Scrivimi</a>
+                            <button id="closeCvMsgHome" class="cv-close" title="Chiudi" type="button">Chiudi</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -249,11 +370,13 @@
                 const toggleMenu = () => {
                     nav.classList.toggle('open');
                     btn.classList.toggle('active');
+                    overlay.classList.toggle('open');
                 };
                 
                 const closeMenu = () => {
                     nav.classList.remove('open');
                     btn.classList.remove('active');
+                    overlay.classList.remove('open');
                 };
                 
                 btn.addEventListener('click', toggleMenu);
