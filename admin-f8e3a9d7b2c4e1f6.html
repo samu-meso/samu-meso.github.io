@@ -107,6 +107,60 @@
             ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#1e2a3b,#2f4460);border-radius:999px;border:2px solid #0b0f15}
             ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#2a3c55,#3a5576)}
             @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+            .widget-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+            .widget{background:var(--card-bg);border:1px solid rgba(95,168,255,0.25);border-radius:16px;padding:18px;backdrop-filter:blur(8px)}
+            .widget-title{font-size:16px;font-weight:700;color:var(--primary);margin:0 0 12px 0;display:flex;align-items:center;gap:8px}
+            .widget-input,.widget-textarea{width:100%;background:rgba(15,20,25,0.5);border:1px solid rgba(95,168,255,0.2);border-radius:8px;padding:10px;color:var(--text);font-size:13px;margin-bottom:8px}
+            .widget-textarea{min-height:120px;font-family:monospace;resize:vertical}
+            .widget-btn{background:linear-gradient(90deg,var(--primary),#7fd1ff);color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px;transition:all 0.2s;width:100%}
+            .widget-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(95,168,255,0.3)}
+            .widget-output{background:rgba(15,20,25,0.7);border:1px solid rgba(95,168,255,0.15);border-radius:8px;padding:12px;color:var(--accent);font-family:monospace;font-size:13px;word-break:break-all;max-height:200px;overflow-y:auto;margin-top:8px;display:none;white-space:pre-wrap}
+            .widget-output.show{display:block}
+            .strength-indicator{height:6px;background:rgba(95,168,255,0.1);border-radius:3px;margin-top:8px;overflow:hidden}
+            .strength-bar{height:100%;width:0%;background:#ff6b6b;transition:all 0.3s;border-radius:3px}
+            .strength-text{font-size:11px;color:var(--muted);margin-top:4px}
+            .qr-container{display:none;justify-content:center;align-items:center;background:rgba(15,20,25,0.7);border-radius:8px;padding:12px;margin:8px 0;min-height:220px;max-height:250px}
+            .qr-container.show{display:flex}
+            .qr-container img{max-width:100%;height:auto}
+            .calc-display{background:rgba(15,20,25,0.7);border:1px solid rgba(95,168,255,0.2);border-radius:8px;padding:12px;text-align:right;color:var(--accent);font-family:monospace;font-size:18px;font-weight:700;margin-bottom:8px;word-break:break-word;min-height:32px}
+            .calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+            .calc-btn{background:rgba(95,168,255,0.15);border:1px solid rgba(95,168,255,0.3);color:var(--primary);padding:10px;border-radius:6px;cursor:pointer;font-weight:600;transition:all 0.2s;font-size:13px}
+            .calc-btn:hover{background:rgba(95,168,255,0.25);border-color:var(--primary)}
+            .calc-btn.operator{background:rgba(122,229,130,0.15);color:var(--accent);border-color:rgba(122,229,130,0.3)}
+            .calc-btn.equals{background:linear-gradient(90deg,var(--accent),#8ff591);color:#062012;font-weight:700}
+            .calc-btn.clear{background:rgba(255,107,107,0.15);color:#ff6b6b;border-color:rgba(255,107,107,0.3)}
+            .color-preview{width:100%;height:100px;border-radius:16px;border:3px solid rgba(95,168,255,0.4);margin:12px 0;background:#7ae582;box-shadow:0 8px 24px rgba(122,229,130,0.3);transition:all 0.3s ease;cursor:pointer}
+            .color-preview:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(122,229,130,0.45)}
+            .color-codes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;font-size:13px}
+            .color-code{background:rgba(95,168,255,0.08);border:1.5px solid rgba(95,168,255,0.25);border-radius:10px;padding:12px;color:var(--text);display:flex;flex-direction:column;gap:8px;transition:all 0.2s;cursor:pointer}
+            .color-code:hover{background:rgba(95,168,255,0.15);border-color:var(--primary);box-shadow:0 4px 12px rgba(95,168,255,0.15)}
+            .color-code span{font-family:monospace;font-weight:600;color:var(--accent);word-break:break-all}
+            .color-copy-btn{background:linear-gradient(90deg,var(--primary),#7fd1ff);color:#fff;padding:6px 12px;border-radius:6px;border:none;cursor:pointer;font-size:12px;font-weight:600;transition:all 0.2s}
+            .color-copy-btn:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(95,168,255,0.3)}
+            .lorem-output{background:rgba(15,20,25,0.7);border:1px solid rgba(95,168,255,0.15);border-radius:8px;padding:12px;color:var(--text);font-size:13px;line-height:1.6;max-height:200px;overflow-y:auto;margin:10px 0;text-align:justify;display:none}
+            .lorem-output.show{display:block}
+            .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+            .stat-box{background:rgba(95,168,255,0.1);border:1px solid rgba(95,168,255,0.2);border-radius:8px;padding:10px;text-align:center}
+            .stat-number{font-size:20px;font-weight:700;color:var(--accent);font-family:monospace}
+            .stat-label{font-size:11px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
+            .hash-inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:10px 0}
+            .hash-input-btn{background:rgba(95,168,255,0.15);border:1px solid rgba(95,168,255,0.3);color:var(--primary);padding:8px;border-radius:6px;cursor:pointer;font-weight:600;font-size:12px;transition:all 0.2s}
+            .hash-input-btn:hover{background:rgba(95,168,255,0.25);border-color:var(--primary)}
+            .hash-input-btn.active{background:var(--primary);color:#fff}
+            .hash-output{background:rgba(15,20,25,0.7);border:1px solid rgba(95,168,255,0.15);border-radius:8px;padding:10px;color:var(--accent);font-family:monospace;font-size:12px;word-break:break-all;max-height:120px;overflow-y:auto;margin:10px 0;display:none}
+            .hash-output.show{display:block}
+            .timestamp-result{background:rgba(95,168,255,0.1);border:1px solid rgba(95,168,255,0.2);border-radius:8px;padding:10px;margin:8px 0;color:var(--text);font-size:12px;display:none}
+            .timestamp-result.show{display:block}
+            .result-line{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(95,168,255,0.1)}
+            .result-line:last-child{border-bottom:none}
+            .result-label{color:var(--muted);font-size:11px}
+            .diff-container{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+            .diff-column{background:rgba(15,20,25,0.7);border:1px solid rgba(95,168,255,0.15);border-radius:8px;padding:12px;max-height:250px;overflow-y:auto;font-size:12px;font-family:monospace;line-height:1.6}
+            .diff-line{padding:4px 0;border-bottom:1px solid rgba(95,168,255,0.1)}
+            .diff-line:last-child{border-bottom:none}
+            .diff-added{background:rgba(122,229,130,0.15);color:#7ae582;padding:4px 6px;border-radius:4px;margin:2px 0}
+            .diff-removed{background:rgba(255,107,107,0.15);color:#ff6b6b;padding:4px 6px;border-radius:4px;margin:2px 0}
+            .diff-header{background:rgba(95,168,255,0.15);border-left:3px solid var(--primary);padding:8px;margin-bottom:8px;border-radius:4px;font-weight:600;color:var(--primary)}
             @media (max-width:700px){
                 .navbar{position:relative;z-index:1000}
                 .nav-links{position:fixed;top:70px;right:12px;width:160px;background:linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);flex-direction:column;padding:12px;gap:8px;display:none;z-index:999;overflow-y:auto;border-radius:12px;border:1px solid rgba(88,166,255,0.2);box-shadow:0 4px 16px rgba(0,0,0,0.5)}
@@ -114,6 +168,7 @@
                 .nav-links a{width:100%;text-align:center;padding:8px;border-radius:8px;background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);font-size:13px}
                 .hamburger{display:block}
                 .header-container{position:sticky;top:0;z-index:999;background:linear-gradient(135deg, rgba(15,20,25,0.95) 0%, rgba(13,17,23,0.95) 100%);backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+                .widget-grid{grid-template-columns:1fr}
             }
         </style>
     </head>
@@ -259,6 +314,208 @@ Esempi:
                         <li>Le note salvate sono visibili solo su questo browser/device</li>
                     </ul>
                 </section>
+
+                <div class="section-divider"></div>
+
+                <!-- Utility Widgets -->
+                <section class="card">
+                    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Utility Tools</h2>
+                    <div class="widget-grid">
+                        <!-- Password Generator -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-lock"></i> Password Generator
+                            </div>
+                            <div style="display:flex;gap:8px;margin-bottom:10px">
+                                <select id="pwd-length" class="widget-input" style="flex:1;margin-bottom:0">
+                                    <option value="8">8 caratteri</option>
+                                    <option value="12">12 caratteri</option>
+                                    <option value="16" selected>16 caratteri</option>
+                                    <option value="24">24 caratteri</option>
+                                    <option value="32">32 caratteri</option>
+                                </select>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;font-size:12px">
+                                <label style="display:flex;align-items:center;gap:6px;color:var(--text)">
+                                    <input type="checkbox" id="pwd-symbols" checked> Simboli
+                                </label>
+                                <label style="display:flex;align-items:center;gap:6px;color:var(--text)">
+                                    <input type="checkbox" id="pwd-numbers" checked> Numeri
+                                </label>
+                            </div>
+                            <button class="widget-btn" onclick="generatePassword()">Genera</button>
+                            <div class="widget-output" id="pwd-output" style="display:none"></div>
+                            <div class="strength-indicator" id="pwd-strength" style="display:none">
+                                <div class="strength-bar" id="pwd-bar"></div>
+                            </div>
+                            <div class="strength-text" id="pwd-text"></div>
+                        </div>
+
+                        <!-- QR Code Generator -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-qrcode"></i> QR Code
+                            </div>
+                            <textarea id="qr-input" class="widget-textarea" placeholder="Inserisci testo o URL..."></textarea>
+                            <button class="widget-btn" onclick="generateQR()">Genera QR Code</button>
+                            <div class="qr-container" id="qr-container"></div>
+                        </div>
+
+                        <!-- JSON Formatter -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-code"></i> JSON Formatter
+                            </div>
+                            <textarea id="json-input" class="widget-textarea" placeholder="Incolla JSON qui..."></textarea>
+                            <button class="widget-btn" onclick="formatJSON()">Formatta</button>
+                            <div class="widget-output" id="json-output"></div>
+                        </div>
+
+                        <!-- Color Picker -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-palette"></i> Color Picker
+                            </div>
+                            <input type="color" id="color-input" style="width:100%;height:60px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3)" value="#7ae582">
+                            <div class="color-preview" id="color-preview"></div>
+                            <div class="color-codes">
+                                <div class="color-code">
+                                    <strong style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px">HEX</strong>
+                                    <span id="hex-value">#7AE582</span>
+                                    <button class="color-copy-btn" onclick="copyColor('hex')"><i class="fa-solid fa-copy"></i> Copia</button>
+                                </div>
+                                <div class="color-code">
+                                    <strong style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px">RGB</strong>
+                                    <span id="rgb-value">RGB(122, 229, 130)</span>
+                                    <button class="color-copy-btn" onclick="copyColor('rgb')"><i class="fa-solid fa-copy"></i> Copia</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lorem Ipsum Generator -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-file-text"></i> Lorem Ipsum
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+                                <div>
+                                    <label style="font-size:12px;color:var(--muted);display:block;margin-bottom:4px">Tipo:</label>
+                                    <select id="lorem-type" class="widget-input" style="margin-bottom:0">
+                                        <option value="paragraphs">Paragrafi</option>
+                                        <option value="sentences">Frasi</option>
+                                        <option value="words">Parole</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="font-size:12px;color:var(--muted);display:block;margin-bottom:4px">Quantità:</label>
+                                    <input type="number" id="lorem-count" class="widget-input" value="3" min="1" max="50" style="margin-bottom:0">
+                                </div>
+                            </div>
+                            <button class="widget-btn" onclick="generateLorem()">Genera</button>
+                            <div class="lorem-output" id="lorem-output"></div>
+                            <button class="widget-btn" style="background:rgba(95,168,255,0.15);color:var(--primary);margin-top:8px;display:none" id="lorem-copy-btn" onclick="copyLorem()"><i class="fa-solid fa-copy"></i> Copia</button>
+                        </div>
+
+                        <!-- UUID Generator -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-ticket"></i> UUID Generator
+                            </div>
+                            <button class="widget-btn" onclick="generateUUID()">Genera UUID v4</button>
+                            <div class="widget-output" id="uuid-output" style="margin-top:8px;display:none"></div>
+                            <button class="widget-btn" style="background:rgba(95,168,255,0.15);color:var(--primary);margin-top:8px" onclick="copyUUID()"><i class="fa-solid fa-copy"></i> Copia</button>
+                        </div>
+
+                        <!-- Hash Generator -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-lock"></i> Hash Generator
+                            </div>
+                            <textarea id="hash-input" class="widget-textarea" placeholder="Inserisci testo da hashare..." style="margin-bottom:8px"></textarea>
+                            <div class="hash-inputs">
+                                <button class="hash-input-btn active" onclick="generateHash('sha256')">SHA256</button>
+                                <button class="hash-input-btn" onclick="generateHash('sha1')">SHA1</button>
+                                <button class="hash-input-btn" onclick="generateHash('md5')">MD5</button>
+                            </div>
+                            <div class="hash-output" id="hash-output"></div>
+                        </div>
+
+                        <!-- Text Statistics -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-chart-bar"></i> Text Statistics
+                            </div>
+                            <textarea id="stats-input" class="widget-textarea" placeholder="Inserisci testo da analizzare..."></textarea>
+                            <button class="widget-btn" onclick="calculateStats()">Analizza</button>
+                            <div class="stats-grid" id="stats-grid" style="display:none">
+                                <div class="stat-box">
+                                    <div class="stat-number" id="stat-chars">0</div>
+                                    <div class="stat-label">Caratteri</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-number" id="stat-words">0</div>
+                                    <div class="stat-label">Parole</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-number" id="stat-lines">0</div>
+                                    <div class="stat-label">Righe</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-number" id="stat-spaces">0</div>
+                                    <div class="stat-label">Spazi</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timestamp Converter -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-hourglass"></i> Timestamp
+                            </div>
+                            <button class="widget-btn" onclick="getCurrentTimestamp()" style="margin-bottom:8px">Timestamp Attuale</button>
+                            <input type="number" id="timestamp-input" class="widget-input" placeholder="Incolla timestamp...">
+                            <button class="widget-btn" onclick="convertTimestamp()">Converti</button>
+                            <div class="timestamp-result" id="timestamp-result">
+                                <div class="result-line">
+                                    <span class="result-label">Data/Ora:</span>
+                                    <span id="result-datetime"></span>
+                                </div>
+                                <div class="result-line">
+                                    <span class="result-label">Timezone:</span>
+                                    <span id="result-tz"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diff Checker -->
+                        <div class="widget">
+                            <div class="widget-title">
+                                <i class="fa-solid fa-code-compare"></i> Diff Checker
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+                                <div>
+                                    <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">Testo 1:</label>
+                                    <textarea id="diff-text1" class="widget-textarea" placeholder="Inserisci primo testo..."></textarea>
+                                </div>
+                                <div>
+                                    <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">Testo 2:</label>
+                                    <textarea id="diff-text2" class="widget-textarea" placeholder="Inserisci secondo testo..."></textarea>
+                                </div>
+                            </div>
+                            <button class="widget-btn" onclick="compareTexts()">Confronta</button>
+                            <div class="diff-container" id="diff-result" style="display:none">
+                                <div>
+                                    <div class="diff-header">Solo in Testo 1</div>
+                                    <div class="diff-column" id="diff-only1"></div>
+                                </div>
+                                <div>
+                                    <div class="diff-header">Solo in Testo 2</div>
+                                    <div class="diff-column" id="diff-only2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
         </div>
         <!-- End Main Content -->
@@ -275,12 +532,526 @@ Esempi:
             </div>
         </div>
 
-        <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
             // Credenziali (password hashata con SHA-256)
             const CREDENTIALS = {
                 username: 'admin',
                 passwordHash: 'f6fc11f5459472a5658c4475bd1067f2b7e0ffa026b8d470b10c4797b79c7eba'
             };
+
+            // ===== COLOR PICKER =====
+            const colorInput = document.getElementById('color-input');
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                if (colorInput) {
+                    colorInput.addEventListener('input', updateColorDisplay);
+                    updateColorDisplay();
+                }
+            });
+            
+            function updateColorDisplay() {
+                const hex = colorInput.value.toUpperCase();
+                const rgb = hexToRgb(hex);
+                
+                document.getElementById('color-preview').style.background = hex;
+                document.getElementById('hex-value').textContent = hex;
+                document.getElementById('rgb-value').textContent = `RGB(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+            }
+            
+            function hexToRgb(hex) {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : { r: 0, g: 0, b: 0 };
+            }
+            
+            function copyColor(format) {
+                let text = '';
+                if (format === 'hex') {
+                    text = document.getElementById('hex-value').textContent;
+                } else if (format === 'rgb') {
+                    text = document.getElementById('rgb-value').textContent;
+                }
+                
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification('Copiato', text + ' copiato negli appunti!');
+                });
+            }
+
+            // ===== LOREM IPSUM GENERATOR =====
+            const loremWords = ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua', 'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud', 'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip', 'ex', 'ea', 'commodo', 'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate', 'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint', 'occaecat', 'cupidatat', 'non', 'proident', 'sunt', 'culpa', 'qui', 'officia', 'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum'];
+            
+            function generateLorem() {
+                const type = document.getElementById('lorem-type').value;
+                const count = parseInt(document.getElementById('lorem-count').value) || 1;
+                let text = '';
+                
+                if (type === 'words') {
+                    for (let i = 0; i < count; i++) {
+                        text += loremWords[Math.floor(Math.random() * loremWords.length)] + ' ';
+                    }
+                    text = text.trim();
+                } else if (type === 'sentences') {
+                    for (let i = 0; i < count; i++) {
+                        let sentence = '';
+                        const sentenceLength = Math.floor(Math.random() * 10) + 5;
+                        for (let j = 0; j < sentenceLength; j++) {
+                            sentence += loremWords[Math.floor(Math.random() * loremWords.length)] + ' ';
+                        }
+                        text += sentence.charAt(0).toUpperCase() + sentence.slice(1).trim() + '. ';
+                    }
+                    text = text.trim();
+                } else if (type === 'paragraphs') {
+                    for (let i = 0; i < count; i++) {
+                        let paragraph = '';
+                        const parLength = Math.floor(Math.random() * 5) + 4;
+                        for (let j = 0; j < parLength; j++) {
+                            let sentence = '';
+                            const sentenceLength = Math.floor(Math.random() * 10) + 5;
+                            for (let k = 0; k < sentenceLength; k++) {
+                                sentence += loremWords[Math.floor(Math.random() * loremWords.length)] + ' ';
+                            }
+                            paragraph += sentence.charAt(0).toUpperCase() + sentence.slice(1).trim() + '. ';
+                        }
+                        text += paragraph + '\n\n';
+                    }
+                    text = text.trim();
+                }
+                
+                const output = document.getElementById('lorem-output');
+                output.textContent = text;
+                output.classList.add('show');
+                document.getElementById('lorem-copy-btn').style.display = 'block';
+                showNotification('Lorem generato', 'Testo Lorem Ipsum generato con successo!');
+            }
+            
+            function copyLorem() {
+                const text = document.getElementById('lorem-output').textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification('Copiato', 'Lorem Ipsum copiato negli appunti!');
+                });
+            }
+
+            // ===== UUID GENERATOR =====
+            function generateUUID() {
+                const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    const r = Math.random() * 16 | 0;
+                    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+                
+                const output = document.getElementById('uuid-output');
+                output.textContent = uuid;
+                output.style.display = 'block';
+                showNotification('UUID generato', 'UUID generato con successo!');
+            }
+            
+            function copyUUID() {
+                const uuid = document.getElementById('uuid-output').textContent;
+                if (uuid) {
+                    navigator.clipboard.writeText(uuid).then(() => {
+                        showNotification('Copiato', 'UUID copiato negli appunti!');
+                    });
+                } else {
+                    showNotification('Attenzione', 'Genera un UUID prima di copiarlo!', 'warning');
+                }
+            }
+
+            // ===== HASH GENERATOR =====
+            async function generateHash(algorithm) {
+                const input = document.getElementById('hash-input').value.trim();
+                const output = document.getElementById('hash-output');
+                
+                if (!input) {
+                    showNotification('Errore', 'Inserisci testo da hashare!', 'warning');
+                    return;
+                }
+                
+                // Aggiorna bottoni
+                document.querySelectorAll('.hash-input-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+                
+                const encoder = new TextEncoder();
+                const data = encoder.encode(input);
+                let hashHex = '';
+                
+                try {
+                    if (algorithm === 'sha256') {
+                        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                        hashHex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+                    } else if (algorithm === 'sha1') {
+                        const hashBuffer = await crypto.subtle.digest('SHA-1', data);
+                        hashHex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+                    } else if (algorithm === 'md5') {
+                        // MD5 semplificato con libreria (usando un'implementazione JavaScript)
+                        hashHex = md5(input);
+                    }
+                    
+                    output.innerHTML = '<strong>' + algorithm.toUpperCase() + ':</strong><br>' + hashHex;
+                    output.classList.add('show');
+                    showNotification('Hash generato', algorithm.toUpperCase() + ' calcolato!');
+                } catch (e) {
+                    output.innerHTML = '<div class="json-error">Errore nel calcolo dell hash</div>';
+                    output.classList.add('show');
+                }
+            }
+            
+            // MD5 simple implementation
+            function md5(str) {
+                function md5cycle(x, k) {
+                    var a = x[0], b = x[1], c = x[2], d = x[3];
+                    a = ff(a, b, c, d, k[0], 7, -680876936);
+                    d = ff(d, a, b, c, k[1], 12, -389564586);
+                    c = ff(c, d, a, b, k[2], 17, 606105819);
+                    b = ff(b, c, d, a, k[3], 22, -1044525550);
+                    a = ff(a, b, c, d, k[4], 7, -176418897);
+                    d = ff(d, a, b, c, k[5], 12, 1200080426);
+                    c = ff(c, d, a, b, k[6], 17, -1473231341);
+                    b = ff(b, c, d, a, k[7], 22, -45705983);
+                    a = ff(a, b, c, d, k[8], 7, 1770035416);
+                    d = ff(d, a, b, c, k[9], 12, -1958414417);
+                    c = ff(c, d, a, b, k[10], 17, -42063);
+                    b = ff(b, c, d, a, k[11], 22, -1990404162);
+                    a = ff(a, b, c, d, k[12], 7, 1804603682);
+                    d = ff(d, a, b, c, k[13], 12, -40341101);
+                    c = ff(c, d, a, b, k[14], 17, -1502002290);
+                    b = ff(b, c, d, a, k[15], 22, 1236535329);
+                    a = gg(a, b, c, d, k[1], 5, -165796510);
+                    d = gg(d, a, b, c, k[6], 9, -1069501632);
+                    c = gg(c, d, a, b, k[11], 14, 643717713);
+                    b = gg(b, c, d, a, k[0], 20, -373897302);
+                    a = gg(a, b, c, d, k[5], 5, -701558691);
+                    d = gg(d, a, b, c, k[10], 9, 38016083);
+                    c = gg(c, d, a, b, k[15], 14, -660478335);
+                    b = gg(b, c, d, a, k[4], 20, -405537848);
+                    a = gg(a, b, c, d, k[9], 5, 568446438);
+                    d = gg(d, a, b, c, k[14], 9, -1019803690);
+                    c = gg(c, d, a, b, k[3], 14, -187363961);
+                    b = gg(b, c, d, a, k[8], 20, 1163531501);
+                    a = gg(a, b, c, d, k[13], 5, -1444681467);
+                    d = gg(d, a, b, c, k[2], 9, -51403784);
+                    c = gg(c, d, a, b, k[7], 14, 1735328473);
+                    b = gg(b, c, d, a, k[12], 20, -1926607734);
+                    a = hh(a, b, c, d, k[5], 4, -378558);
+                    d = hh(d, a, b, c, k[8], 11, -2022574632);
+                    c = hh(c, d, a, b, k[11], 16, 1839030562);
+                    b = hh(b, c, d, a, k[14], 23, -35309556);
+                    a = hh(a, b, c, d, k[1], 4, -1530992060);
+                    d = hh(d, a, b, c, k[4], 11, 1272893353);
+                    c = hh(c, d, a, b, k[7], 16, -155497632);
+                    b = hh(b, c, d, a, k[10], 23, -1094730640);
+                    a = hh(a, b, c, d, k[13], 4, 681279174);
+                    d = hh(d, a, b, c, k[0], 11, -358537222);
+                    c = hh(c, d, a, b, k[3], 16, -722521979);
+                    b = hh(b, c, d, a, k[6], 23, 76029189);
+                    a = hh(a, b, c, d, k[9], 4, -640364487);
+                    d = hh(d, a, b, c, k[12], 11, -421815835);
+                    c = hh(c, d, a, b, k[15], 16, 530742520);
+                    b = hh(b, c, d, a, k[2], 23, -995338651);
+                    a = ii(a, b, c, d, k[0], 6, -198630844);
+                    d = ii(d, a, b, c, k[7], 10, 1126891415);
+                    c = ii(c, d, a, b, k[14], 15, -1416354905);
+                    b = ii(b, c, d, a, k[5], 21, -57434055);
+                    a = ii(a, b, c, d, k[12], 6, 1700485571);
+                    d = ii(d, a, b, c, k[3], 10, -1894986606);
+                    c = ii(c, d, a, b, k[10], 15, -1051523);
+                    b = ii(b, c, d, a, k[1], 21, -2054922799);
+                    a = ii(a, b, c, d, k[8], 6, 1873313359);
+                    d = ii(d, a, b, c, k[15], 10, -30611744);
+                    c = ii(c, d, a, b, k[6], 15, -1560198380);
+                    b = ii(b, c, d, a, k[13], 21, 1309151649);
+                    a = ii(a, b, c, d, k[4], 6, -145523070);
+                    d = ii(d, a, b, c, k[11], 10, -1120210379);
+                    c = ii(c, d, a, b, k[2], 15, 718787259);
+                    b = ii(b, c, d, a, k[9], 21, -343487606);
+                    x[0] = add32(a, x[0]);
+                    x[1] = add32(b, x[1]);
+                    x[2] = add32(c, x[2]);
+                    x[3] = add32(d, x[3]);
+                }
+                function cmn(q, a, b, x, s, t) {
+                    a = add32(add32(a, q), add32(x, t));
+                    return add32((a << s) | (a >>> (32 - s)), b);
+                }
+                function ff(a, b, c, d, x, s, t) {
+                    return cmn((b & c) | ((~b) & d), a, b, x, s, t);
+                }
+                function gg(a, b, c, d, x, s, t) {
+                    return cmn((b & d) | (c & (~d)), a, b, x, s, t);
+                }
+                function hh(a, b, c, d, x, s, t) {
+                    return cmn(b ^ c ^ d, a, b, x, s, t);
+                }
+                function ii(a, b, c, d, x, s, t) {
+                    return cmn(c ^ (b | (~d)), a, b, x, s, t);
+                }
+                function add32(a, b) {
+                    return (a + b) & 0xffffffff;
+                }
+                function rhex(n) {
+                    var s = '', j;
+                    for (j = 0; j < 4; j++) s += String.fromCharCode(n >>> (j * 8) & 255);
+                    return s;
+                }
+                function hex(x) {
+                    for (var i = 0; i < x.length; i++) x[i] = rhex(x[i]);
+                    return x.join('');
+                }
+                var s = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+                function rstr2b64(input) {
+                    var output = '', i = -1, l = input.length;
+                    while (++i < l) {
+                        var chr1 = input.charCodeAt(i);
+                        var enc1 = chr1 >> 2;
+                        var leftbits = (chr1 & 3) << 4;
+                        if (++i < l) {
+                            var chr2 = input.charCodeAt(i);
+                            var enc2 = (leftbits) | (chr2 >> 4);
+                            var rightbits = (chr2 & 15) << 2;
+                            if (++i < l) {
+                                var chr3 = input.charCodeAt(i);
+                                var enc3 = (rightbits) | (chr3 >> 6);
+                                var enc4 = chr3 & 63;
+                                output += s.charAt(enc1) + s.charAt(enc2) + s.charAt(enc3) + s.charAt(enc4);
+                            } else {
+                                output += s.charAt(enc1) + s.charAt(enc2) + s.charAt(enc3) + '=';
+                            }
+                        } else {
+                            output += s.charAt(enc1) + s.charAt(enc2) + '==';
+                        }
+                    }
+                    return output;
+                }
+                var rstr_md5 = function(s) {
+                    return binl2rstr(binl_md5(rstr2binl(s), s.length * 8));
+                    function rstr2binl(input) {
+                        var output = Array(input.length >> 2);
+                        for (var i = 0; i < output.length; i++) output[i] = 0;
+                        for (var i = 0; i < input.length * 8; i += 8)
+                            output[i >> 5] |= (input.charCodeAt(i / 8) & 255) << (i % 32);
+                        return output;
+                    }
+                    function binl_md5(x, len) {
+                        x[len >> 5] |= 128 << ((len) % 32);
+                        x[(((len + 64) >>> 9) << 4) + 14] = len;
+                        var a = 1732584193, b = -271733879, c = -1732584194, d = 271733878;
+                        for (var i = 0; i < x.length; i += 16) md5cycle(x.slice(i, i + 16), [a, b, c, d]);
+                        return [a, b, c, d];
+                    }
+                    function binl2rstr(input) {
+                        var output = '';
+                        for (var i = 0; i < input.length * 32; i += 8)
+                            output += String.fromCharCode((input[i >> 5] >>> (i % 32)) & 255);
+                        return output;
+                    }
+                };
+                return hex(rstr_md5(str));
+            }
+
+            // ===== TEXT STATISTICS =====
+            function calculateStats() {
+                const text = document.getElementById('stats-input').value;
+                const grid = document.getElementById('stats-grid');
+                
+                const chars = text.length;
+                const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+                const lines = text ? text.split('\n').length : 0;
+                const spaces = (text.match(/ /g) || []).length;
+                
+                document.getElementById('stat-chars').textContent = chars;
+                document.getElementById('stat-words').textContent = words;
+                document.getElementById('stat-lines').textContent = lines;
+                document.getElementById('stat-spaces').textContent = spaces;
+                
+                grid.style.display = 'grid';
+                showNotification('Analisi completata', 'Statistiche calcolate!');
+            }
+
+            // ===== TIMESTAMP CONVERTER =====
+            function getCurrentTimestamp() {
+                const timestamp = Math.floor(Date.now() / 1000);
+                document.getElementById('timestamp-input').value = timestamp;
+                convertTimestamp();
+            }
+            
+            function convertTimestamp() {
+                const timestamp = parseInt(document.getElementById('timestamp-input').value);
+                const result = document.getElementById('timestamp-result');
+                
+                if (!timestamp || isNaN(timestamp)) {
+                    showNotification('Errore', 'Inserisci un timestamp valido!', 'warning');
+                    return;
+                }
+                
+                try {
+                    const date = new Date(timestamp * 1000);
+                    const options = { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    };
+                    
+                    const formatted = date.toLocaleDateString('it-IT', options);
+                    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                    
+                    document.getElementById('result-datetime').textContent = formatted;
+                    document.getElementById('result-tz').textContent = tz;
+                    
+                    result.classList.add('show');
+                    showNotification('Convertito', 'Timestamp convertito!');
+                } catch (e) {
+                    showNotification('Errore', 'Timestamp non valido!', 'warning');
+                }
+            }
+
+            // ===== DIFF CHECKER =====
+            function compareTexts() {
+                const text1 = document.getElementById('diff-text1').value;
+                const text2 = document.getElementById('diff-text2').value;
+                const result = document.getElementById('diff-result');
+                const only1 = document.getElementById('diff-only1');
+                const only2 = document.getElementById('diff-only2');
+                
+                if (!text1 || !text2) {
+                    showNotification('Errore', 'Inserisci entrambi i testi!', 'warning');
+                    return;
+                }
+                
+                // Dividi in righe
+                const lines1 = text1.split('\n');
+                const lines2 = text2.split('\n');
+                
+                // Converti in set per confronto
+                const set1 = new Set(lines1.map(l => l.trim()).filter(l => l));
+                const set2 = new Set(lines2.map(l => l.trim()).filter(l => l));
+                
+                // Elementi solo in testo 1
+                const onlyIn1 = Array.from(set1).filter(line => !set2.has(line));
+                // Elementi solo in testo 2
+                const onlyIn2 = Array.from(set2).filter(line => !set1.has(line));
+                
+                // Mostra risultati
+                only1.innerHTML = onlyIn1.length > 0 
+                    ? onlyIn1.map(line => `<div class="diff-line diff-removed">− ${escapeHtml(line)}</div>`).join('')
+                    : '<div style="color:var(--muted);padding:10px;text-align:center">Nessuna differenza</div>';
+                
+                only2.innerHTML = onlyIn2.length > 0
+                    ? onlyIn2.map(line => `<div class="diff-line diff-added">+ ${escapeHtml(line)}</div>`).join('')
+                    : '<div style="color:var(--muted);padding:10px;text-align:center">Nessuna differenza</div>';
+                
+                result.style.display = 'grid';
+                showNotification('Confronto completato', `${onlyIn1.length} linee solo in Testo 1, ${onlyIn2.length} solo in Testo 2`);
+            }
+
+            // ===== PASSWORD GENERATOR =====
+            function generatePassword() {
+                const length = parseInt(document.getElementById('pwd-length').value);
+                const useSymbols = document.getElementById('pwd-symbols').checked;
+                const useNumbers = document.getElementById('pwd-numbers').checked;
+                
+                let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                if (useNumbers) chars += '0123456789';
+                if (useSymbols) chars += '!@#$%^&*_+-=';
+                
+                let password = '';
+                for (let i = 0; i < length; i++) {
+                    password += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                
+                const output = document.getElementById('pwd-output');
+                output.textContent = password;
+                output.style.display = 'block';
+                
+                // Calcola forza
+                let strength = 0;
+                if (length >= 16) strength += 40;
+                else if (length >= 12) strength += 30;
+                else strength += 20;
+                
+                if (useSymbols && useNumbers) strength += 60;
+                else if (useSymbols || useNumbers) strength += 40;
+                
+                const bar = document.getElementById('pwd-bar');
+                const text = document.getElementById('pwd-text');
+                bar.style.width = strength + '%';
+                
+                if (strength <= 30) {
+                    bar.style.background = '#ff6b6b';
+                    text.textContent = 'Debole';
+                } else if (strength <= 60) {
+                    bar.style.background = '#ffd666';
+                    text.textContent = 'Media';
+                } else {
+                    bar.style.background = '#7ae582';
+                    text.textContent = 'Forte';
+                }
+                
+                document.getElementById('pwd-strength').style.display = 'block';
+                
+                // Copia negli appunti
+                navigator.clipboard.writeText(password).then(() => {
+                    showNotification('Password copiata', 'La password è stata copiata negli appunti!');
+                });
+            }
+
+            // ===== QR CODE GENERATOR =====
+            let qrInstance = null;
+            
+            function generateQR() {
+                const input = document.getElementById('qr-input').value.trim();
+                if (!input) {
+                    showNotification('Errore', 'Inserisci testo o URL!', 'warning');
+                    return;
+                }
+                
+                const container = document.getElementById('qr-container');
+                container.innerHTML = '';
+                container.classList.add('show');
+                
+                try {
+                    qrInstance = new QRCode(container, {
+                        text: input,
+                        width: 200,
+                        height: 200,
+                        colorDark: '#000000',
+                        colorLight: '#ffffff'
+                    });
+                    showNotification('QR Code creato', 'Il QR code è stato generato con successo!');
+                } catch (e) {
+                    container.classList.remove('show');
+                    showNotification('Errore', 'Impossibile generare il QR code.', 'warning');
+                }
+            }
+
+            // ===== JSON FORMATTER =====
+            function formatJSON() {
+                const input = document.getElementById('json-input').value.trim();
+                const output = document.getElementById('json-output');
+                
+                if (!input) {
+                    output.innerHTML = '<div class="json-error"><i class="fa-solid fa-circle-exclamation"></i> Incolla JSON da formattare</div>';
+                    output.classList.add('show');
+                    return;
+                }
+                
+                try {
+                    const parsed = JSON.parse(input);
+                    const formatted = JSON.stringify(parsed, null, 2);
+                    output.classList.add('show');
+                    output.textContent = formatted;
+                    output.style.color = 'var(--accent)';
+                    showNotification('JSON valido', 'Il JSON è stato formattato correttamente!');
+                } catch (e) {
+                    output.classList.add('show');
+                    output.innerHTML = '<div class="json-error"><i class="fa-solid fa-circle-exclamation"></i> JSON non valido: ' + e.message.substring(0, 50) + '</div>';
+                }
+            }
 
             // Funzione per hashare la password con SHA-256
             async function hashPassword(password) {
