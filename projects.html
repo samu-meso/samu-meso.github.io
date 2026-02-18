@@ -96,6 +96,10 @@
             @media (prefers-reduced-motion: reduce){
                 *{animation:none!important;transition:none!important}
             }
+            .footer{background:transparent;padding:8px 18px 24px 18px;text-align:center;color:var(--muted);font-size:12px;opacity:0.5;transition:opacity 0.3s ease}
+            .footer:hover{opacity:1}
+            .footer a{color:var(--muted);text-decoration:none;opacity:0.4;transition:opacity 0.3s ease;border:none}
+            .footer a:hover{opacity:1;color:var(--primary)}
             ::-webkit-scrollbar{width:10px}
             ::-webkit-scrollbar-track{background:#0b0f15}
             ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#1e2a3b,#2f4460);border-radius:999px;border:2px solid #0b0f15}
@@ -305,6 +309,9 @@
                 </div>
             </section>
         </main>
+        <footer class="footer">
+            <p>© 2026 Samuele Mesoraca · <a href="admin-f8e3a9d7b2c4e1f6.html">Area Riservata</a></p>
+        </footer>
 
         <script>
             (function(){

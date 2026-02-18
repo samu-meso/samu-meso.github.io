@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Admin Panel</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+        <style>
+            :root{
+                --bg:#0f1419;
+                --surface:#121926;
+                --accent:#7ae582;
+                --primary:#5fa8ff;
+                --text:#eef2f6;
+                --muted:#9aa5b1;
+                --card-bg: rgba(18,25,38,0.86);
+                --glow: rgba(95,168,255,0.35);
+                --admin-red:#ff6b6b;
+            }
+            *{box-sizing:border-box}
+            *{scrollbar-width:thin;scrollbar-color:#2a3c55 #0b0f15}
+            body{font-family:"Source Sans 3", "Segoe UI", Arial, sans-serif; margin:0; color:var(--text); background:
+                radial-gradient(900px 600px at 10% -10%, rgba(255,107,107,0.18), transparent 55%),
+                radial-gradient(600px 500px at 90% 10%, rgba(122,229,130,0.14), transparent 60%),
+                linear-gradient(180deg, #0f1419 0%, #0b0f15 100%);
+                min-height:100vh;
+            }
+            .header-container{background:transparent;padding:18px 0}
+            .navbar{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px;gap:10px}
+            .logo{display:flex;align-items:center;gap:14px;font-weight:800;color:var(--admin-red);text-decoration:none;justify-content:center;margin-bottom:6px}
+            .logo, .logo:hover, .logo:focus, .logo:active {
+                border-bottom: none !important;
+                text-decoration: none !important;
+                box-shadow: none !important;
+                outline: none !important;
+            }
+            .logo-mark{padding:0}
+            .logo-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+            .logo-name{font-weight:700;letter-spacing:0.6px;font-size:1.15em;color:#fff}
+            .logo-sub{font-size:0.72em;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
+            .logo .mark{width:48px;height:48px;background:#0b0f15;color:#fff;border-radius:12px;display:inline-grid;place-items:center;font-size:18px;border:1px solid rgba(255,107,107,0.3);box-shadow:0 10px 24px rgba(255,107,107,0.25);animation:logoFloat 6s ease-in-out infinite}
+            .nav-links{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:8px}
+            .nav-links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:999px;background:rgba(30,40,60,0.5);border:1px solid rgba(95,168,255,0.25)}
+            .nav-links a:hover{transform:translateY(-3px);box-shadow:0 8px 18px var(--glow)}
+            .hamburger{display:none;border:0;background:transparent;padding:8px;cursor:pointer;z-index:1001;position:relative}
+            .hamburger span{display:block;width:22px;height:3px;background:var(--text);margin:4px 0;border-radius:3px;transition:all 0.3s ease}
+            .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(10px, 10px)}
+            .hamburger.active span:nth-child(2){opacity:0}
+            .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px, -7px)}
+            .container{max-width:1040px;margin:28px auto 64px;padding:0 18px}
+            .card{background:var(--card-bg);border-radius:20px;padding:24px;box-shadow:0 18px 40px rgba(0,0,0,0.45);border:1px solid rgba(255,107,107,0.25); margin-top: 16px;backdrop-filter:blur(8px);transition:transform 0.2s ease, box-shadow 0.2s ease}
+            .card:hover{transform:translateY(-2px);box-shadow:0 22px 48px rgba(0,0,0,0.45)}
+            h1, h2, h3{font-family:"Space Grotesk", "Segoe UI", Arial, sans-serif;letter-spacing:0.2px}
+            h1{font-size:32px;margin:6px 0;color:var(--admin-red)}
+            h2{color:var(--accent);margin:16px 0 8px 0;font-size:22px}
+            h3{color:var(--primary);margin:12px 0 6px 0;font-size:18px}
+            p{line-height:1.7;color:var(--text)}
+            .admin-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,107,0.15);border:1px solid rgba(255,107,107,0.35);color:var(--admin-red);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:12px}
+            .warning-box{background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.3);border-radius:12px;padding:16px;margin:16px 0;color:var(--text)}
+            .warning-box strong{color:var(--admin-red)}
+            .notes-area{background:rgba(15,20,25,0.5);border:1px solid rgba(95,168,255,0.2);border-radius:12px;padding:16px;margin:12px 0;min-height:90px;color:var(--text);font-family:monospace;font-size:14px;line-height:1.6}
+            .section-divider{height:1px;background:linear-gradient(90deg, transparent, rgba(255,107,107,0.3), transparent);margin:24px 0}
+            ul{padding-left:1.2rem;line-height:1.8}
+            li{margin:8px 0}
+            textarea{width:100%;min-height:200px;background:rgba(15,20,25,0.7);border:1px solid rgba(95,168,255,0.25);border-radius:12px;padding:16px;color:var(--text);font-family:monospace;font-size:14px;resize:vertical}
+            textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 2px rgba(95,168,255,0.2)}
+            .btn{background:linear-gradient(90deg,var(--admin-red),#ff8787);color:#fff;padding:10px 20px;border-radius:999px;border:none;font-weight:700;cursor:pointer;font-size:14px;transition:all 0.3s ease;box-shadow:0 6px 16px rgba(255,107,107,0.25)}
+            .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,107,107,0.35)}
+            .login-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(135deg, rgba(15,20,25,0.98) 0%, rgba(11,15,21,0.98) 100%);backdrop-filter:blur(10px);z-index:9999;display:flex;align-items:center;justify-content:center}
+            .login-box{background:var(--card-bg);border:1px solid rgba(255,107,107,0.3);border-radius:20px;padding:32px;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+            .login-logo{text-align:center;margin-bottom:24px}
+            .login-logo i{font-size:48px;color:var(--admin-red);margin-bottom:12px}
+            .login-title{text-align:center;color:var(--text);font-size:24px;margin:0 0 8px 0}
+            .login-subtitle{text-align:center;color:var(--muted);font-size:14px;margin:0 0 24px 0}
+            .form-group{margin-bottom:16px}
+            .form-label{display:block;color:var(--text);font-size:14px;font-weight:600;margin-bottom:6px}
+            .form-input{width:100%;background:rgba(15,20,25,0.7);border:1px solid rgba(95,168,255,0.25);border-radius:8px;padding:12px;color:var(--text);font-size:14px;transition:border-color 0.3s}
+            .form-input:focus{outline:none;border-color:var(--admin-red);box-shadow:0 0 0 2px rgba(255,107,107,0.2)}
+            .login-btn{width:100%;background:linear-gradient(90deg,var(--admin-red),#ff8787);color:#fff;padding:12px;border-radius:999px;border:none;font-weight:700;cursor:pointer;font-size:16px;transition:all 0.3s ease;box-shadow:0 6px 16px rgba(255,107,107,0.25);margin-top:8px}
+            .login-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,107,107,0.35)}
+            .login-error{background:rgba(255,107,107,0.15);border:1px solid rgba(255,107,107,0.4);color:var(--admin-red);padding:10px;border-radius:8px;font-size:13px;margin-top:12px;display:none}
+            .content-hidden{display:none}
+            .task-input-group{display:flex;gap:8px;margin-bottom:12px}
+            .task-input{flex:1;background:rgba(15,20,25,0.7);border:1px solid rgba(95,168,255,0.25);border-radius:8px;padding:10px 12px;color:var(--text);font-size:14px}
+            .task-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 2px rgba(95,168,255,0.2)}
+            .task-add-btn{background:var(--accent);color:#062012;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px;transition:all 0.2s}
+            .task-add-btn:hover{background:#8ff591;transform:translateY(-2px)}
+            .task-list{list-style:none;padding:0;margin:8px 0 0 0}
+            .task-item{background:rgba(95,168,255,0.08);border:1px solid rgba(95,168,255,0.2);border-radius:8px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:all 0.2s}
+            .task-item:hover{background:rgba(95,168,255,0.12);border-color:var(--primary)}
+            .task-text{flex:1;color:var(--text);font-size:14px;line-height:1.5}
+            .task-delete-btn{background:transparent;border:1px solid rgba(255,107,107,0.3);color:var(--admin-red);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12px;transition:all 0.2s;min-width:60px}
+            .task-delete-btn:hover{background:rgba(255,107,107,0.15);border-color:var(--admin-red);transform:scale(1.05)}
+            .notification-overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10000;background:rgba(6,10,16,0.55);justify-content:center;align-items:center;backdrop-filter:blur(6px);animation:fadeIn 0.2s ease}
+            .notification-modal{background:var(--card-bg);color:var(--text);padding:20px 24px;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,0.45);font-size:1.05em;position:relative;min-width:260px;text-align:center;border:1px solid rgba(122,229,130,0.35);max-width:90vw;animation:slideInDown 0.3s ease}
+            .notification-title{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;color:var(--accent);margin-bottom:8px;font-size:18px}
+            .notification-text{margin:0 0 16px 0;color:var(--text)}
+            .notification-btn{background:linear-gradient(90deg,var(--accent),#7fd1ff);color:#062012;padding:8px 20px;border-radius:999px;border:none;font-weight:700;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 12px rgba(122,229,130,0.25)}
+            .notification-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(122,229,130,0.35)}
+            @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+            @keyframes slideInDown{from{transform:translateY(-30px);opacity:0}to{transform:translateY(0);opacity:1}}
+            ::-webkit-scrollbar{width:10px}
+            ::-webkit-scrollbar-track{background:#0b0f15}
+            ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#1e2a3b,#2f4460);border-radius:999px;border:2px solid #0b0f15}
+            ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#2a3c55,#3a5576)}
+            @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+            @media (max-width:700px){
+                .navbar{position:relative;z-index:1000}
+                .nav-links{position:fixed;top:70px;right:12px;width:160px;background:linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);flex-direction:column;padding:12px;gap:8px;display:none;z-index:999;overflow-y:auto;border-radius:12px;border:1px solid rgba(88,166,255,0.2);box-shadow:0 4px 16px rgba(0,0,0,0.5)}
+                .nav-links.open{display:flex}
+                .nav-links a{width:100%;text-align:center;padding:8px;border-radius:8px;background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);font-size:13px}
+                .hamburger{display:block}
+                .header-container{position:sticky;top:0;z-index:999;background:linear-gradient(135deg, rgba(15,20,25,0.95) 0%, rgba(13,17,23,0.95) 100%);backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Login Overlay -->
+        <div id="loginOverlay" class="login-overlay">
+            <div class="login-box">
+                <div class="login-logo">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2 class="login-title">Admin Login</h2>
+                <p class="login-subtitle">Inserisci le credenziali per accedere</p>
+                
+                <form id="loginForm" onsubmit="return handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" id="username" class="form-input" placeholder="admin" autocomplete="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" class="form-input" placeholder="••••••••" autocomplete="current-password" required>
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i> Accedi
+                    </button>
+                </form>
+                
+                <div id="loginError" class="login-error">
+                    <i class="fa-solid fa-circle-exclamation"></i> Credenziali non valide
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content (hidden until login) -->
+        <div id="mainContent" class="content-hidden">
+            <header class="header-container">
+                <nav class="navbar">
+                    <a class="logo" href="index.html">
+                        <span class="mark logo-mark">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </span>
+                        <span class="logo-text">
+                            <span class="logo-name">Admin Panel</span>
+                            <span class="logo-sub">Private Area</span>
+                        </span>
+                    </a>
+                    <div class="nav-links" id="navLinks">
+                        <a href="index.html"><i class="fa-solid fa-home"></i> Torna al sito</a>
+                        <a href="#" onclick="logout(); return false;" style="background:rgba(255,107,107,0.15);border-color:rgba(255,107,107,0.3)">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </a>
+                    </div>
+                    <button class="hamburger" id="navToggle" aria-label="Apri menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </header>
+
+            <main class="container">
+                <section class="card">
+                    <div class="admin-badge">
+                        <i class="fa-solid fa-lock"></i> Area Privata
+                    </div>
+                    <h1><i class="fa-solid fa-user-shield"></i> Pannello Admin</h1>
+                    
+                    <div class="warning-box">
+                        <strong><i class="fa-solid fa-triangle-exclamation"></i> Attenzione:</strong> Questa pagina richiede login ma la sicurezza è limitata (password hashata visible nel codice). OK per note personali, NO per dati sensibili.
+                    </div>
+
+                    <p><strong>URL di questa pagina:</strong><br>
+                    <code style="background:rgba(95,168,255,0.1);padding:4px 8px;border-radius:6px;color:var(--accent)">
+                        https://samu-meso.github.io/admin-f8e3a9d7b2c4e1f6.html
+                    </code></p>
+
+                    <div class="section-divider"></div>
+
+                    <h2><i class="fa-solid fa-clipboard-list"></i> Note Personali</h2>
+                    <p>Scrivi qui le tue note private, task, idee, link utili, etc:</p>
+                    
+                    <textarea id="notes" placeholder="Le tue note personali...
+
+Esempi:
+- Task da fare sul sito
+- Idee per nuovi progetti
+- Link utili da ricordare
+- Codici temporanei
+- Appunti vari"></textarea>
+                    
+                    <button class="btn" onclick="saveNotes()">
+                        <i class="fa-solid fa-save"></i> Salva Note (localStorage)
+                    </button>
+
+                    <div class="section-divider"></div>
+
+                    <h2><i class="fa-solid fa-tasks"></i> Task List</h2>
+                    <div class="notes-area">
+                        <strong>Task da completare:</strong>
+                        <div class="task-input-group">
+                            <input type="text" id="task-input" class="task-input" placeholder="Aggiungi un nuovo task...">
+                            <button onclick="addTask()" class="task-add-btn">
+                                <i class="fa-solid fa-plus"></i> Aggiungi
+                            </button>
+                        </div>
+                        <ul id="task-list" class="task-list"></ul>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h2><i class="fa-solid fa-link"></i> Link Utili</h2>
+                    <div class="notes-area">
+                        <strong>Link importanti:</strong>
+                        <ul>
+                            <li><a href="https://github.com/samu-meso" style="color:var(--primary)">GitHub Repository</a></li>
+                            <li><a href="https://pages.github.com/" style="color:var(--primary)">GitHub Pages Docs</a></li>
+                            <li>Aggiungi altri link qui...</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h2><i class="fa-solid fa-chart-line"></i> Statistiche Sito</h2>
+                    
+                    <h3><i class="fa-solid fa-calendar-check"></i> Ultimo Aggiornamento</h3>
+                    <div class="notes-area">
+                        <div style="display:flex;align-items:center;gap:8px">
+                            <strong>Data:</strong> 
+                            <span id="last-update" style="color:var(--accent);font-weight:700"></span>
+                        </div>
+                        <p style="margin:8px 0 0 0;font-size:13px;color:var(--muted)">
+                            Aggiornato automaticamente ad ogni visita su questa pagina.
+                        </p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3><i class="fa-solid fa-info-circle"></i> Come usare questa pagina</h3>
+                    <ul style="color:var(--muted);font-size:14px">
+                        <li>Salva l'URL in un posto sicuro (bookmark privato, password manager)</li>
+                        <li>Non condividere l'URL con nessuno</li>
+                        <li>Usa "Salva Note" per salvare le note nel localStorage del browser</li>
+                        <li>Le note salvate sono visibili solo su questo browser/device</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+        <!-- End Main Content -->
+
+        <!-- Notification Modal -->
+        <div id="notificationOverlay" class="notification-overlay">
+            <div class="notification-modal">
+                <div class="notification-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span id="notificationTitle">Operazione completata</span>
+                </div>
+                <p class="notification-text" id="notificationText">Messaggio</p>
+                <button id="closeNotification" class="notification-btn">OK</button>
+            </div>
+        </div>
+
+        <script>
+            // Credenziali (password hashata con SHA-256)
+            const CREDENTIALS = {
+                username: 'admin',
+                passwordHash: 'f6fc11f5459472a5658c4475bd1067f2b7e0ffa026b8d470b10c4797b79c7eba'
+            };
+
+            // Funzione per hashare la password con SHA-256
+            async function hashPassword(password) {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(password);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            }
+
+            // Gestione login
+            async function handleLogin(event) {
+                event.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const errorDiv = document.getElementById('loginError');
+                
+                // Verifica username
+                if (username !== CREDENTIALS.username) {
+                    errorDiv.style.display = 'block';
+                    return false;
+                }
+                
+                // Verifica password hashata
+                const passwordHash = await hashPassword(password);
+                if (passwordHash !== CREDENTIALS.passwordHash) {
+                    errorDiv.style.display = 'block';
+                    return false;
+                }
+                
+                // Login riuscito
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('mainContent').classList.remove('content-hidden');
+                initializeAdmin();
+                
+                return false;
+            }
+
+            // Controlla se già loggato all'avvio
+            window.addEventListener('DOMContentLoaded', function() {
+                const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
+                
+                if (isLoggedIn === 'true') {
+                    // Già loggato, mostra contenuto
+                    document.getElementById('loginOverlay').style.display = 'none';
+                    document.getElementById('mainContent').classList.remove('content-hidden');
+                    initializeAdmin();
+                }
+            });
+
+            function initializeAdmin() {
+                // Carica note salvate
+                const savedNotes = localStorage.getItem('adminNotes');
+                if (savedNotes) {
+                    document.getElementById('notes').value = savedNotes;
+                }
+                
+                // Carica e mostra task
+                loadTasks();
+                
+                // Aggiorna data ultimo aggiornamento
+                updateLastUpdate();
+            }
+
+            // Salva note
+            function saveNotes() {
+                const notes = document.getElementById('notes').value;
+                localStorage.setItem('adminNotes', notes);
+                showNotification('Note salvate', 'Le tue note sono state salvate nel localStorage!');
+            }
+            
+            // Gestione Task List
+            let tasks = [];
+            
+            function loadTasks() {
+                const savedTasks = localStorage.getItem('adminTasks');
+                if (savedTasks) {
+                    tasks = JSON.parse(savedTasks);
+                } else {
+                    // Task di default
+                    tasks = [
+                        'Aggiornare portfolio con nuovo progetto',
+                        'Rispondere alle email di contatto',
+                        'Aggiungere sezione blog?'
+                    ];
+                }
+                renderTasks();
+            }
+            
+            function renderTasks() {
+                const taskList = document.getElementById('task-list');
+                if (!taskList) return;
+                
+                if (tasks.length === 0) {
+                    taskList.innerHTML = '<li style="color:var(--muted);font-style:italic;padding:8px">Nessun task. Aggiungine uno!</li>';
+                    return;
+                }
+                
+                taskList.innerHTML = tasks.map((task, index) => `
+                    <li class="task-item">
+                        <span class="task-text">${escapeHtml(task)}</span>
+                        <button onclick="deleteTask(${index})" class="task-delete-btn">
+                            <i class="fa-solid fa-trash"></i> Elimina
+                        </button>
+                    </li>
+                `).join('');
+            }
+            
+            function addTask() {
+                const input = document.getElementById('task-input');
+                const taskText = input.value.trim();
+                
+                if (taskText === '') {
+                    showNotification('Attenzione', 'Inserisci un task prima di aggiungerlo!', 'warning');
+                    return;
+                }
+                
+                tasks.push(taskText);
+                saveTasks();
+                renderTasks();
+                input.value = '';
+                input.focus();
+                showNotification('Task aggiunto', 'Il task è stato aggiunto alla lista!');
+            }
+            
+            function deleteTask(index) {
+                tasks.splice(index, 1);
+                saveTasks();
+                renderTasks();
+                showNotification('Task eliminato', 'Il task è stato rimosso dalla lista.');
+            }
+            
+            function saveTasks() {
+                localStorage.setItem('adminTasks', JSON.stringify(tasks));
+            }
+            
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+            
+            // Sistema di notifiche
+            function showNotification(title, message, type = 'success') {
+                const overlay = document.getElementById('notificationOverlay');
+                const titleEl = document.getElementById('notificationTitle');
+                const textEl = document.getElementById('notificationText');
+                const modal = overlay.querySelector('.notification-modal');
+                const iconEl = modal.querySelector('.notification-title i');
+                
+                // Imposta contenuto
+                titleEl.textContent = title;
+                textEl.textContent = message;
+                
+                // Imposta icona e colore in base al tipo
+                if (type === 'warning') {
+                    iconEl.className = 'fa-solid fa-triangle-exclamation';
+                    modal.style.borderColor = 'rgba(255,193,7,0.5)';
+                    titleEl.style.color = '#ffc107';
+                } else {
+                    iconEl.className = 'fa-solid fa-circle-check';
+                    modal.style.borderColor = 'rgba(122,229,130,0.35)';
+                    titleEl.style.color = 'var(--accent)';
+                }
+                
+                // Mostra overlay
+                overlay.style.display = 'flex';
+                
+                // Auto-chiudi dopo 3 secondi
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Chiudi notifica con click
+            document.addEventListener('DOMContentLoaded', function() {
+                const closeBtn = document.getElementById('closeNotification');
+                const overlay = document.getElementById('notificationOverlay');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        overlay.style.display = 'none';
+                    });
+                }
+                
+                // Chiudi cliccando fuori
+                if (overlay) {
+                    overlay.addEventListener('click', function(e) {
+                        if (e.target === overlay) {
+                            overlay.style.display = 'none';
+                        }
+                    });
+                }
+            });
+            
+            // Aggiunta task con Enter
+            document.addEventListener('DOMContentLoaded', function() {
+                const taskInput = document.getElementById('task-input');
+                if (taskInput) {
+                    taskInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            addTask();
+                        }
+                    });
+                }
+            });
+            
+            // Aggiorna data ultimo aggiornamento
+            function updateLastUpdate() {
+                const now = new Date();
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                };
+                const formatted = now.toLocaleDateString('it-IT', options);
+                document.getElementById('last-update').textContent = formatted;
+                
+                // Salva nel localStorage
+                localStorage.setItem('adminLastUpdate', formatted);
+            }
+
+            // Hamburger menu toggle
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('active');
+                    navLinks.classList.toggle('open');
+                });
+            }
+
+            // Chiudi menu quando si clicca fuori
+            document.addEventListener('click', function(e) {
+                if (navToggle && navLinks && !navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('open');
+                }
+            });
+            
+            // Logout
+            function logout() {
+                sessionStorage.removeItem('adminLoggedIn');
+                window.location.href = 'index.html';
+            }
+        </script>
+    </body>
+</html>
